@@ -1,88 +1,135 @@
 ---
-const items = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
+const links = [
+  { href: "/", text: "Home" },
+  { href: "/product", text: "Product" },
+  { href: "/promo", text: "Promo" },
+  { href: "/about", text: "About" },
+  { href: "/contact", text: "Contact" },
 ];
+
+const year = new Date().getFullYear();
 ---
 
-<nav class="bg-gray-800">
-  <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-    <div class="relative flex items-center justify-between h-16">
-      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-        <button
-          type="button"
-          class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-          aria-controls="mobile-menu"
-          aria-expanded="false"
-        >
-          <span class="sr-only">Open main menu</span>
-          <svg
-            class="block h-6 w-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16m-7 6h7"></path>
-          </svg>
-          <svg
-            class="hidden h-6 w-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
-      <div
-        class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start"
-      >
-        <div class="flex-shrink-0">
-          <img class="h-8 w-auto" src="/img/logo.svg" alt="Workflow" />
-        </div>
-        <div class="hidden sm:block sm:ml-6">
-          <div class="flex space-x-4">
-            {
-              items.map((item) => (
-                <a
-                  href={item.href}
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  aria-current="page"
-                >
-                  {item.name}
-                </a>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-    </div>
+<nav
+  class="flex justify-between items-center px-8 text-white fixed
+  w-full shadow-md z-10 bg-gray-800 p-4"
+>
+  <a href="/" class="flex items-center">
+    <img src="/logo.png" class="w-72 h-24" alt="" />
+  </a>
+  <div class="hidden md:flex">
+    {
+      links.map((link) => (
+        <a href={link.href} class="text-3xl px-4 hover:opacity-75">
+          {link.text}
+        </a>
+      ))
+    }
   </div>
-  <div class="sm:hidden" id="mobile-menu">
-    <div class="px-2 pt-2 pb-3 space-y-1">
+  <button
+    id="searchButton"
+    class="p-2 rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-search"
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+        d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path
+        d="M21 21l-6 -6"></path></svg
+    >
+  </button>
+  <button
+    id="menuButton"
+    class="md:hidden p-2 rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-menu"
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+        d="M4 8h16"></path><path d="M4 16h16"></path></svg
+    >
+  </button>
+</nav>
+
+<div
+  id="mobileMenu"
+  class="fixed top-0 right-0 w-full h-full bg-gray-800 text-white p-4 transform translate-x-full transition-transform origin-right z-50 flex flex-col"
+>
+  <button
+    id="closeMenuButton"
+    class="p-2 rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 absolute top-4 right-4"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-x"
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+        d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg
+    >
+  </button>
+  <div class="flex flex-col items-center mt-16 space-y-8 flex-grow">
+    <div class="flex items-center">
+      <img src="/logo.png" class="w-48 h-16" alt="Logo" />
+    </div>
+    <div class="text-4xl font-bold">Menu</div>
+    <div class="flex flex-col items-center space-y-4 flex-grow">
       {
-        items.map((item) => (
-          <a
-            href={item.href}
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            {item.name}
+        links.map((link) => (
+          <a href={link.href} class="text-3xl py-2 hover:opacity-75">
+            {link.text}
           </a>
         ))
       }
     </div>
+    <div class="mt-auto">
+      <p class="text-center text-xl">&copy; {year} Prometheus</p>
+    </div>
   </div>
-</nav>
+</div>
+
+<script>
+  const searchButton = document.getElementById("searchButton");
+  if (searchButton) {
+    searchButton.addEventListener("click", () => {
+      const query = prompt("Enter your search query:");
+      if (query) {
+        window.location.href = `/search?q=${query}`;
+      }
+    });
+  }
+
+  const menuButton = document.getElementById("menuButton");
+  const closeMenuButton = document.getElementById("closeMenuButton");
+  const mobileMenu = document.getElementById("mobileMenu");
+  if (menuButton && mobileMenu && closeMenuButton) {
+    menuButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("translate-x-full");
+    });
+    closeMenuButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("translate-x-full");
+    });
+  }
+</script>
