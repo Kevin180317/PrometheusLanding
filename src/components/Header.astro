@@ -26,26 +26,7 @@ const year = new Date().getFullYear();
       ))
     }
   </div>
-  <button
-    id="searchButton"
-    class="p-2 rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="icon icon-tabler icons-tabler-outline icon-tabler-search"
-      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-        d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path
-        d="M21 21l-6 -6"></path></svg
-    >
-  </button>
+  <button> Idioma </button>
   <button
     id="menuButton"
     class="md:hidden p-2 rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
@@ -111,16 +92,6 @@ const year = new Date().getFullYear();
 </div>
 
 <script>
-  const searchButton = document.getElementById("searchButton");
-  if (searchButton) {
-    searchButton.addEventListener("click", () => {
-      const query = prompt("Enter your search query:");
-      if (query) {
-        window.location.href = `/search?q=${query}`;
-      }
-    });
-  }
-
   const menuButton = document.getElementById("menuButton");
   const closeMenuButton = document.getElementById("closeMenuButton");
   const mobileMenu = document.getElementById("mobileMenu");
