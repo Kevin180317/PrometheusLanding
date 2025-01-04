@@ -7,7 +7,7 @@ import Container from "@Components/Container.astro";
 import Quote from "@Components/Quote.astro";
 import About from "@Components/About.astro";
 import Banner from "@Components/Banner.astro";
-import Contact from "@Components/Contact.astro";
+import Contact from "@Components/Contact";
 ---
 
 <Layout title="PrometheusTij || R&D">
@@ -18,6 +18,6 @@ import Contact from "@Components/Contact.astro";
     <Quote />
     <About />
     <Banner />
-    <Contact />
+    <Contact client:visible />
   </Container>
 </Layout>
