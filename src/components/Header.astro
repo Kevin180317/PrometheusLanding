@@ -1,12 +1,16 @@
 ---
 import Language from "@Components/Language";
 import Logo from "@public/Logo.svg";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const links = [
-  { href: "/", text: "Home" },
-  { href: "/product", text: "Product" },
-  { href: "/promo", text: "Promo" },
-  { href: "/about", text: "About" },
-  { href: "/contact", text: "Contact" },
+  { href: t("link.home"), text: t("nav.home") },
+  { href: t("link.products"), text: t("nav.products") },
+  // { href: t("link.promo"), text: t("nav.promo") },
+  { href: t("link.about"), text: t("nav.about") },
+  { href: t("link.contact"), text: t("nav.contact") },
 ];
 
 const year = new Date().getFullYear();

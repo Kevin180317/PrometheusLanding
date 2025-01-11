@@ -1,14 +1,17 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <main
-  class="bg-gray-700 h-screen flex justify-center items-center flex-col text-white px-4"
+  class="bg-gray-700 py-12 md:py-0 md:h-screen flex justify-center items-center flex-col text-white px-4"
 >
   <h1 class="text-5xl mb-8">
-    SOMOS UNA EMPRESA 100% TIJUANENSE QUE CONOCE EL DINAMISMO BINACIONAL.
+    {t("about.title")}
   </h1>
   <h1 class="text-3xl mb-8">
-    NUESTRO GRUPO DE EXPERTOS SE ADAPTARAN A TUS REQUERIMIENTOS.
+    {t("about.subtitle")}
   </h1>
 </main>

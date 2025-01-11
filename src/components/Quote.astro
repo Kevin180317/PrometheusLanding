@@ -1,28 +1,49 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<main>
-  <section class="grid grid-cols-1 md:grid-cols-2">
-    <div class="bg-black">
-      <img src="/Imagenes/1.png" alt="" class="w-full" />
+<main class="text-white">
+  <section class="grid grid-cols-1 md:grid-cols-2 md:h-screen">
+    <div class="bg-black hidden md:block">
+      <img src="/Imagenes/1.png" alt="" class="w-full h-screen" />
     </div>
-    <div class="flex justify-center items-center flex-col">
-      <h1 class="uppercase text-5xl">Poderosas soluciones</h1>
-      <p class="text-xl">Somos un equipo de talento digital.</p>
-      <button class="bg-black px-8 py-2 text-3xl uppercase text-white">
-        Cotizar
-      </button>
+    <div class="flex justify-center items-center flex-col fondo1 md:py-0 py-8">
+      <h1 class="uppercase text-5xl mb-2">
+        {t("quote.title")}
+      </h1>
+      <p class="text-xl mb-4">
+        {t("quote.subtitle")}
+      </p>
+      <a href="#contact">
+        <button class="bg-black px-8 py-2 text-3xl uppercase text-white">
+          {t("quote.button")}
+        </button>
+      </a>
+    </div>
+    <div class="bg-black block md:hidden">
+      <img src="/Imagenes/1.png" alt="" class="w-full h-screen" />
     </div>
   </section>
-  <section class="grid grid-cols-2">
-    <div class="flex justify-center items-center flex-col">
+  <section class="grid grid-cols-1 md:grid-cols-2 md:h-screen">
+    <div class="flex justify-center items-center flex-col fondo2 md:py-0 py-8">
       <h1 class="uppercase text-5xl text-center">
-        CONVERTIMOS TUS GRANDES IDEAS EN SOLUCIONES IMPACTANTES.
+        {t("quote.title2")}
       </h1>
     </div>
     <div class="bg-black">
-      <img src="/Imagenes/2.png" alt="" class="w-full" />
+      <img src="/Imagenes/2.png" alt="" class="w-full h-screen" />
     </div>
   </section>
 </main>
+
+<style>
+  .fondo1 {
+    background-image: url("/Fondos/2.png");
+  }
+  .fondo2 {
+    background-image: url("/Fondos/3.png");
+  }
+</style>

@@ -1,8 +1,7 @@
 ---
 import "@fontsource/bebas-neue";
 import "@fonts/MYRIADPRO-REGULAR.woff";
-import Header from "@Components/Header.astro";
-import Footer from "@Components/Footer.astro";
+
 import { getLangFromUrl } from "src/i18n/utils";
 
 interface Props {
@@ -48,9 +47,7 @@ const lang = getLangFromUrl(Astro.url);
     <title>{title}</title>
   </head>
   <body class="overflow-x-hidden">
-    <Header />
     <slot />
-    <Footer />
   </body>
 </html>
 
