@@ -9,6 +9,7 @@ const services = [
     id: 1,
     title: t("service.web"),
     image: "/Imagenes/3.png",
+    href: "/prices",
   },
   {
     id: 2,
@@ -37,9 +38,12 @@ const services = [
       services.map((index) => (
         <div>
           <img src={index.image} alt="" class="md:h-96" />
-          <div class="flex justify-center items-center text-2xl bg-gray-800 text-white h-24">
+          <a
+            href={index.href}
+            class="flex justify-center items-center text-2xl bg-gray-800 text-white h-24"
+          >
             {index.title}
-          </div>
+          </a>
         </div>
       ))
     }
@@ -49,5 +53,6 @@ const services = [
 <style>
   .service {
     background-image: url("/Fondos/5.png");
+    background-size: cover;
   }
 </style>

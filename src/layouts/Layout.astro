@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import "@fontsource/bebas-neue";
 import "@fonts/MYRIADPRO-REGULAR.woff";
 import Header from "@Components/Header.astro";
@@ -44,8 +45,8 @@ const lang = getLangFromUrl(Astro.url);
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Astro" />
     <meta name="theme-color" content="#000000" />
-
     <title>{title}</title>
+    <ClientRouter />
   </head>
   <body class="overflow-x-hidden">
     <Header />

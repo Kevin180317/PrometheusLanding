@@ -1,0 +1,77 @@
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const packages = [
+  {
+    name: "Basic",
+    price: 10,
+    features: ["1 User", "10GB Storage", "Email Support", "Help Center Access"],
+    image: "/Iconos/Medalla.png",
+  },
+  {
+    name: "Pro",
+    price: 20,
+    features: [
+      "5 Users",
+      "50GB Storage",
+      "Priority Email Support",
+      "Help Center Access",
+    ],
+    image: "/Iconos/Medalla.png",
+  },
+  {
+    name: "Enterprise",
+    price: 30,
+    features: [
+      "Unlimited Users",
+      "150GB Storage",
+      "Phone & Email Support",
+      "Help Center Access",
+    ],
+    image: "/Iconos/Medalla.png",
+  },
+];
+---
+
+<section class="flex justify-center items-center min-h-screen">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h1 class="text-6xl font-bold text-center mb-4">
+      {t("work.title")}
+    </h1>
+    <p class="text-center text-lg mb-8">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, animi!
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {
+        packages.map((pkg) => (
+          <div class="bg-blue-500 text-white shadow-lg rounded-lg p-6 flex flex-col items-center">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl mb-4 font-bold text-center">
+              {pkg.name}
+            </h2>
+            <img
+              src={pkg.image}
+              alt={pkg.name}
+              class="w-24 h-24 object-cover mb-4"
+            />
+            <p class="text-2xl md:text-3xl lg:text-4xl font-bold text-center">
+              ${pkg.price}
+            </p>
+            <ul class="mt-4 space-y-2">
+              {pkg.features.map((feature) => (
+                <li class="flex items-center justify-center">
+                  <span class="ml-2">{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <button class="bg-green-500 text-white w-full rounded-full p-2 mt-6 hover:bg-green-600 transition">
+              Choose Plan
+            </button>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
