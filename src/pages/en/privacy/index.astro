@@ -1,70 +1,12 @@
 ---
 import Layout from "@Layouts/Layout.astro";
-
-import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-
-const policy = [
-  {
-    id: 1,
-    title: t("policy.collected.title"),
-    info: t("policy.collected.info"),
-  },
-  {
-    id: 2,
-    title: t("policy.use.title"),
-    info: t("policy.use.info"),
-  },
-  {
-    id: 3,
-    title: t("policy.protection.title"),
-    info: t("policy.protection.info"),
-  },
-  {
-    id: 4,
-    title: t("policy.disclosure.title"),
-    info: t("policy.disclosure.info"),
-  },
-  {
-    id: 5,
-    title: t("policy.changes.title"),
-    info: t("policy.changes.info"),
-  },
-  {
-    id: 6,
-    title: t("policy.consent.title"),
-    info: t("policy.consent.info"),
-  },
-];
+import Hero from "@Components/privacy/Hero.astro";
+import Content from "@Components/privacy/Content.astro";
 ---
 
-<Layout title="Politica de privacidad">
+<Layout title="Privacy Policy">
   <main>
-    <div class="hero h-screen">
-      <div class="flex justify-center items-center h-full">
-        <div class="text-white text-center">
-          <h1 class="text-6xl font-bold">{t("policy.title")}</h1>
-        </div>
-      </div>
-    </div>
-    <div class="container mx-auto px-8 py-16">
-      {
-        policy.map((index) => (
-          <div class="py-4">
-            <h2 class="text-3xl font-bold">{index.title}</h2>
-            <p class="text-lg">{index.info}</p>
-          </div>
-        ))
-      }
-    </div>
+    <Hero />
+    <Content />
   </main>
 </Layout>
-
-<style>
-  .hero {
-    background-image: url("/Imagenes/6.png");
-    background-size: cover;
-  }
-</style>

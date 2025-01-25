@@ -1,0 +1,60 @@
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const terms = [
+  {
+    id: 1,
+    title: t("term.use.title"),
+    info: t("term.use.info"),
+  },
+  {
+    id: 2,
+    title: t("term.property.title"),
+    info: t("term.property.info"),
+  },
+  {
+    id: 3,
+    title: t("term.responsability.title"),
+    info: t("term.responsability.info"),
+  },
+  {
+    id: 4,
+    title: t("term.links.title"),
+    info: t("term.links.info"),
+  },
+  {
+    id: 5,
+    title: t("term.modifications.title"),
+    info: t("term.modifications.info"),
+  },
+  {
+    id: 6,
+    title: t("term.law.title"),
+    info: t("term.law.info"),
+  },
+  {
+    id: 7,
+    title: t("term.contact.title"),
+    info: t("term.contact.info"),
+  },
+  {
+    id: 8,
+    title: t("term.conclusion.title"),
+    info: t("term.conclusion.info"),
+  },
+];
+---
+
+<div class="container mx-auto px-8 py-16">
+  {
+    terms.map((index) => (
+      <div class="py-4">
+        <h2 class="text-3xl  text-[#39BAC8]">{index.title}</h2>
+        <p class="text-lg">{index.info}</p>
+      </div>
+    ))
+  }
+</div>

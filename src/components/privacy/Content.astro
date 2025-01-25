@@ -1,0 +1,50 @@
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const policy = [
+  {
+    id: 1,
+    title: t("policy.collected.title"),
+    info: t("policy.collected.info"),
+  },
+  {
+    id: 2,
+    title: t("policy.use.title"),
+    info: t("policy.use.info"),
+  },
+  {
+    id: 3,
+    title: t("policy.protection.title"),
+    info: t("policy.protection.info"),
+  },
+  {
+    id: 4,
+    title: t("policy.disclosure.title"),
+    info: t("policy.disclosure.info"),
+  },
+  {
+    id: 5,
+    title: t("policy.changes.title"),
+    info: t("policy.changes.info"),
+  },
+  {
+    id: 6,
+    title: t("policy.consent.title"),
+    info: t("policy.consent.info"),
+  },
+];
+---
+
+<div class="container mx-auto px-8 py-16">
+  {
+    policy.map((index) => (
+      <div class="py-4">
+        <h2 class="text-3xl text-[#39BAC8]">{index.title}</h2>
+        <p class="text-lg">{index.info}</p>
+      </div>
+    ))
+  }
+</div>
