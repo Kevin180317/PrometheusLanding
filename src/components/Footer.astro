@@ -4,6 +4,7 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const year = new Date().getFullYear();
 ---
 
 <footer class="bg-gray-800 p-4 text-white py-8">
@@ -13,9 +14,8 @@ const t = useTranslations(lang);
     <div>
       <img src="/logofooter.webp" class="h-24 w-42" alt="Company Logo" />
       <p class="md:w-[80%] px-4">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum modi
-        consectetur ad ea. Pariatur, reprehenderit blanditiis. Inventore laborum
-        quibusdam modi.
+        &copy; {year}
+        {t("footer.copy")}
       </p>
       <Icons client:visible />
     </div>
