@@ -5,13 +5,13 @@ import { FaLinkedin } from "react-icons/fa";
 
 function Icons() {
   return (
-    <div class="flex gap-4 px-4 py-4">
-        <FaFacebook className='text-2xl hover:text-blue-500 hover:cursor-pointer' />
-        <FaInstagram className='text-2xl hover:text-blue-500 hover:cursor-pointer' />
-        <FaXTwitter className='text-2xl hover:text-blue-500 hover:cursor-pointer' />
-        <FaLinkedin className='text-2xl hover:text-blue-500 hover:cursor-pointer' />
+    <div className="flex gap-4 px-4 py-4">
+      <FaFacebook className="text-2xl hover:text-blue-500 hover:cursor-pointer" />
+      <FaInstagram className="text-2xl hover:text-blue-500 hover:cursor-pointer" />
+      <FaXTwitter className="text-2xl hover:text-blue-500 hover:cursor-pointer" />
+      <FaLinkedin className="text-2xl hover:text-blue-500 hover:cursor-pointer" />
     </div>
-  )
+  );
 }
 
-export default Icons
+export default Icons;

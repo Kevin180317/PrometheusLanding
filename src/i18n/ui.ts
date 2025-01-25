@@ -96,6 +96,7 @@ export const ui = {
     "footer.other": "Other",
     "footer.contact": "Contact",
     "footer.copy": "Prometheus R&D Tijuana. All rights reserved.",
+    "contact.page.title": "Contact",
   },
   es: {
     "nav.home": "Inicio",
@@ -188,5 +189,8 @@ export const ui = {
     "footer.other": "Otros",
     "footer.contact": "Contacto",
     "footer.copy": "Prometheus R&D Tijuana. Todos los derechos reservados.",
+    "contact.page.title": "Contáctanos",
+    "contact.page.info":
+      "¿Tienes alguna pregunta o comentario? ¡Estamos aquí para ayudarte!",
   },
 } as const;
