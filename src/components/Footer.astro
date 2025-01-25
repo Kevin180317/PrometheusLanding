@@ -1,5 +1,9 @@
 ---
 import Icons from "@Components/Icons";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <footer class="bg-gray-800 p-4 text-white py-8">
@@ -16,26 +20,42 @@ import Icons from "@Components/Icons";
       <Icons client:visible />
     </div>
     <div class="px-4 md:px-0">
-      <h2 class="text-4xl">About</h2>
+      <h2 class="text-4xl">{t("footer.about")}</h2>
       <ul class="list-none">
-        <li><a href="/history" class="hover:underline">History</a></li>
-        <li><a href="/team" class="hover:underline">Our Team</a></li>
-        <li><a href="/terms" class="hover:underline">Terms & Conditions</a></li>
+        <!-- <li><a href="/history" class="hover:underline">History</a></li>
+        <li><a href="/team" class="hover:underline">Our Team</a></li> -->
         <li>
-          <a href="/privacy-policy" class="hover:underline">Privacy Policy</a>
+          <a href={t("link.term")} class="hover:underline"
+            >{t("footer.terms")}</a
+          >
+        </li>
+        <li>
+          <a href={t("link.policy")} class="hover:underline">
+            {t("footer.policy")}
+          </a>
         </li>
       </ul>
     </div>
     <div class="px-4 md:px-0">
-      <h2 class="text-4xl">Services</h2>
+      <h2 class="text-4xl">
+        {t("footer.services")}
+      </h2>
       <ul class="list-none">
-        <li><a href="/product" class="hover:underline">Our Product</a></li>
+        <li>
+          <a href="/product" class="hover:underline">{t("footer.products")}</a>
+        </li>
       </ul>
     </div>
     <div class="px-4 md:px-0">
-      <h2 class="text-4xl">Other</h2>
+      <h2 class="text-4xl">
+        {t("footer.other")}
+      </h2>
       <ul class="list-none">
-        <li><a href="/contact" class="hover:underline">Contact Us</a></li>
+        <li>
+          <a href="/contact" class="hover:underline">
+            {t("footer.contact")}
+          </a>
+        </li>
       </ul>
     </div>
   </div>
