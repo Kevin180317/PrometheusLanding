@@ -1,0 +1,72 @@
+---
+import Layout from "@Layouts/Layout.astro";
+
+const items = [
+  {
+    id: 1,
+    colSpan: 2,
+    rowSpan: 2,
+    colStart: 1,
+    rowStart: 1,
+    text: "1",
+    image: "/Imagenes/1.png",
+  },
+  {
+    id: 2,
+    colSpan: 1,
+    rowSpan: 2,
+    colStart: 3,
+    rowStart: 1,
+    text: "2",
+    image: "/Imagenes/2.png",
+  },
+  {
+    id: 3,
+    colSpan: 2,
+    rowSpan: 2,
+    colStart: 2,
+    rowStart: 3,
+    text: "3",
+    image: "/Imagenes/3.png",
+  },
+  {
+    id: 4,
+    colSpan: 1,
+    rowSpan: 2,
+    colStart: 1,
+    rowStart: 3,
+    text: "4",
+    image: "/Imagenes/4.png",
+  },
+];
+---
+
+<Layout title="Productos">
+  <main class="h-screen w-screen mx-auto container">
+    <h1 class="text-center text-6xl mt-12">Productos</h1>
+    <div
+      class="grid md:grid-cols-3 md:grid-rows-4 gap-8 px-24 py-16 h-96 md:h-[700px]"
+    >
+      {
+        items.map((item) => (
+          <div
+            class={`col-span-${item.colSpan} row-span-${item.rowSpan} col-start-${item.colStart} row-start-${item.rowStart} rounded-3xl border border-black text-black bg-cover bg-center group relative`}
+          >
+            <div
+              class="relative overflow-hidden rounded-3xl"
+              style={{ width: "100%", height: "100%" }}
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center transition-transform duration-300 ease-in-out group-hover:scale-110"
+                style={`background-image: url(${item.image});`}
+              />
+            </div>
+            <p class="absolute bottom-1/2 left-1/2 transform -translate-x-1/2 text-center text-white p-2 rounded">
+              {item.text}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </main>
+</Layout>
