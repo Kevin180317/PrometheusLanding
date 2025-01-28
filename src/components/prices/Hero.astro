@@ -36,39 +36,42 @@ const packages = [
 ];
 ---
 
-<section class="flex justify-center items-center min-h-screen">
+<section class="flex justify-center items-center min-h-screen bg-gray-50 py-12">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h1 class="text-6xl font-bold text-center mb-4">
+    <h1 class="text-5xl font-bold text-center text-gray-900 mb-6">
       {t("work.title")}
     </h1>
-    <p class="text-center text-lg mb-8">
+    <p class="text-center text-gray-600 text-lg mb-12">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, animi!
     </p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {
         packages.map((pkg) => (
-          <div class="bg-blue-500 text-white shadow-lg rounded-lg p-6 flex flex-col items-center">
-            <h2 class="text-2xl md:text-3xl lg:text-4xl mb-4 font-bold text-center">
-              {pkg.name}
-            </h2>
-            <img
-              src={pkg.image}
-              alt={pkg.name}
-              class="w-24 h-24 object-cover mb-4"
-            />
-            <p class="text-2xl md:text-3xl lg:text-4xl font-bold text-center">
-              ${pkg.price}
-            </p>
-            <ul class="mt-4 space-y-2">
-              {pkg.features.map((feature) => (
-                <li class="flex items-center justify-center">
-                  <span class="ml-2">{feature}</span>
-                </li>
-              ))}
-            </ul>
-            <button class="bg-green-500 text-white w-full rounded-full p-2 mt-6 hover:bg-green-600 transition">
-              Choose Plan
-            </button>
+          <div class=" text-gray-800 shadow-xl rounded-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+            <div class="p-8 flex flex-col items-center">
+              <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">
+                {pkg.name}
+              </h2>
+              <img
+                src={pkg.image}
+                alt={pkg.name}
+                class="w-24 h-24 object-cover mb-6"
+              />
+              <p class="text-4xl font-bold text-center text-gray-900 mb-6">
+                ${pkg.price}
+                <span class="text-lg font-normal text-gray-600">/mo</span>
+              </p>
+              <ul class="space-y-3 mb-8">
+                {pkg.features.map((feature) => (
+                  <li class="flex items-center justify-center text-gray-600">
+                    <span class="ml-2">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <button class="w-full bg-green-500 text-white font-semibold py-3 rounded-lg hover:bg-green-600 transition-colors duration-300">
+                Choose Plan
+              </button>
+            </div>
           </div>
         ))
       }

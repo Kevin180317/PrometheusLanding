@@ -1,0 +1,10 @@
+---
+import Prices from "@Components/prices/Hero.astro";
+import Product from "@Components/prices/Product";
+import Layout from "@Layouts/Layout.astro";
+---
+
+<Layout title="PrometheusTij - Prices">
+  <Product client:load categoria="App" />
+  <Prices />
+</Layout>

@@ -13,7 +13,24 @@ const links = [
   { href: t("link.contact"), text: t("nav.contact") },
 ];
 
+const prices = [
+  {
+    href: "/prices/prototipo/",
+    text: "Prototipo",
+  },
+  {
+    href: "/prices/app/",
+    text: "App",
+  },
+  {
+    href: "/prices/web/",
+    text: "Web",
+  },
+];
+
 const year = new Date().getFullYear();
+
+const URL = Astro.url.pathname;
 ---
 
 <nav
@@ -23,15 +40,32 @@ const year = new Date().getFullYear();
   <a href="/" class="flex items-center">
     <Logo class="w-32 h-32" />
   </a>
-  <div class="hidden md:flex">
-    {
-      links.map((link) => (
-        <a href={link.href} class="text-3xl px-4 hover:opacity-75">
-          {link.text}
-        </a>
-      ))
-    }
-  </div>
+  {
+    URL === "/" ? (
+      <div class="hidden md:flex">
+        {links.map((link) => (
+          <a href={link.href} class="text-3xl px-4 hover:opacity-75">
+            {link.text}
+          </a>
+        ))}
+      </div>
+    ) : URL === "/prices/web" ||
+      URL === "/prices/app" ||
+      URL === "/prices/prototipos" ? (
+      <div class="hidden md:flex">
+        {prices.map((link) => (
+          <a href={link.href} class="text-3xl px-4 hover:opacity-75">
+            {link.text}
+          </a>
+        ))}
+      </div>
+    ) : URL === "/terms" ||
+      URL === "/privacy" ||
+      URL === "/product" ||
+      URL === "/contact" ? (
+      <div />
+    ) : null
+  }
 
   <div>
     <Language client:visible />
