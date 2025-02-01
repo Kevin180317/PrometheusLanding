@@ -43,22 +43,44 @@ export default function Product({ categoria}) {
     const webProjects = projects.filter(project => project.category ===  categoria);
 
     return (
-        <div className="p-8  bg-gray-100">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                {webProjects.map((project) => (
-                    <div key={project.id} className="relative group overflow-hidden rounded-lg shadow-lg transform transition duration-500 hover:scale-105 h-80 hover:h-96">
-                        <div className="relative h-full overflow-hidden">
-                            <img src={project.image} alt={project.name} className="w-full h-full object-cover" />
-
-                        </div>
-                        <div className="absolute bottom-0 left-0 right-0 bg-white p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-700">
-                            <h2 className="text-2xl font-bold text-black mb-2">{project.name}</h2>
-                            <p className="text-black mb-4">{project.description}</p>
-                            <p className="text-sm text-gray-700">{project.category}</p>
+<div className="p-8 min-h-screen bg-gray-50">
+    <div className="max-w-7xl mx-auto">
+        {/* Grid de proyectos mejorado con efecto de panel deslizable */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {webProjects.map((project) => (
+                    <div 
+                    key={project.id} 
+                    className="group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out overflow-hidden"
+                >
+                    {/* Imagen con efecto hover mejorado */}
+                    <div className="relative h-72 overflow-hidden">
+                        <img 
+                            src={project.image} 
+                            alt={project.name} 
+                            className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105" 
+                            loading="lazy"
+                        />
+                        
+                        {/* Overlay de información */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <div className="space-y-3 text-white">
+                                <div className="inline-flex items-center px-3 py-1.5 bg-indigo-500/90 rounded-full text-sm font-medium">
+                                    {project.category}
+                                </div>
+                                <h3 className="text-2xl font-bold leading-tight">{project.name}</h3>
+                                <p className="text-gray-200 line-clamp-3">{project.description}</p>
+                            </div>
                         </div>
                     </div>
-                ))}
-            </div>
+
+                    {/* Badge flotante */}
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-medium shadow-sm">
+                        {project.category}
+                    </div>
+                </div>
+            ))}
         </div>
+    </div>
+</div>
     );
 }
