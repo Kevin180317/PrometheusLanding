@@ -20,18 +20,18 @@ export default function Form() {
     try {
       await axios.post("https://prometheustij.com/formulario", formData);
       toast.success("Mensaje enviado exitosamente");
-      setEmail("")
-      setName("")
-      setMessage("")
+      setEmail("");
+      setName("");
+      setMessage("");
     } catch (error) {
       toast.error("No se pudo enviar el mensaje");
-    } 
+    }
   };
 
   return (
-    <div className="flex flex-col justify-center items-center bg-[#39BAC8] p-8 m-8">
+    <div className="flex flex-col justify-center items-center rounded-md bg-[#39BAC8] p-8 m-8 max-w-full">
       <h1 className="text-3xl font-bold text-center">Formulario de contacto</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="w-full max-w-lg">
         <div className="flex flex-col gap-4">
           <input
             type="text"
@@ -40,7 +40,7 @@ export default function Form() {
             name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="p-2.5 px-8 py-3 border border-black focus:outline-none text-black"
+            className="p-2.5 px-8 py-3 border border-black focus:outline-none text-black w-full"
           />
           <input
             type="email"
@@ -49,7 +49,7 @@ export default function Form() {
             placeholder="Correo"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="p-2.5 px-8 py-3 border border-black focus:outline-none text-black"
+            className="p-2.5 px-8 py-3 border border-black focus:outline-none text-black w-full"
           />
           <textarea
             name="message"
@@ -57,7 +57,7 @@ export default function Form() {
             placeholder="Mensaje"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="p-2.5 px-8 py-3 border border-black focus:outline-none text-black"
+            className="p-2.5 px-8 py-3 border border-black focus:outline-none text-black w-full"
             rows="5"
           ></textarea>
           <button
