@@ -20,9 +20,14 @@ export default function Form() {
     try {
       await axios.post("https://prometheustij.com/formulario", formData);
       toast.success("Mensaje enviado exitosamente");
+      setEmail("")
+      setName("")
+      setMessage("")
+      console.log("TRUE")
     } catch (error) {
       toast.error("No se pudo enviar el mensaje");
-    }
+      console.log("FALSE")
+    } 
   };
 
   return (
