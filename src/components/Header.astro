@@ -49,9 +49,9 @@ const URL = Astro.url.pathname;
           </a>
         ))}
       </div>
-    ) : URL === "/prices/web" ||
-      URL === "/prices/app" ||
-      URL === "/prices/prototipos" ? (
+    ) : URL === "/prices/web/" ||
+      URL === "/prices/app/" ||
+      URL === "/prices/prototipo/" ? (
       <div class="hidden md:flex">
         {prices.map((link) => (
           <a href={link.href} class="text-3xl px-4 hover:opacity-75">
