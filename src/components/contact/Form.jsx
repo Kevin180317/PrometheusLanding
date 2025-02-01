@@ -23,10 +23,8 @@ export default function Form() {
       setEmail("")
       setName("")
       setMessage("")
-      console.log("TRUE")
     } catch (error) {
       toast.error("No se pudo enviar el mensaje");
-      console.log("FALSE")
     } 
   };
 
