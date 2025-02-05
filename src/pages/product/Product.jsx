@@ -5,41 +5,48 @@ export default function Product() {
 
     const projects = [
         {
-            id: 1,
-            name: 'Proyecto 1',
-            description: 'Descripción del proyecto 1',
-            image: '/Imagenes/1.webp',
-            category: 'App'
+          id: 1,
+          name: "Proyecto 1",
+          description: "Descripción del proyecto 1",
+          image: "/Imagenes/app1.png",
+          category: "App",
         },
         {
-            id: 2,
-            name: 'Proyecto 2',
-            description: 'Descripción del proyecto 2',
-            image: '/Imagenes/2.jpg',
-            category: 'Web'
+          id: 2,
+          name: "Proyecto 2",
+          description: "Descripción del proyecto 2",
+          image: "/Imagenes/mockup1.png",
+          category: "Web",
         },
         {
-            id: 3,
-            name: 'Proyecto 3',
-            description: 'Descripción del proyecto 3',
-            image: '/Imagenes/3.webp',
-            category: 'App'
+          id: 3,
+          name: "Proyecto 3",
+          description: "Descripción del proyecto 3",
+          image: "/Imagenes/app2.png",
+          category: "App",
         },
         {
-            id: 4,
-            name: 'Proyecto 4',
-            description: 'Descripción del proyecto 4',
-            image: '/Imagenes/4.jpg',
-            category: 'Prototipo'
+          id: 4,
+          name: "Proyecto 4",
+          description: "Descripción del proyecto 4",
+          image: "/Imagenes/mockup2.png",
+          category: "Web",
         },
         {
-            id: 5,
-            name: 'Proyecto 5',
-            description: 'Descripción del proyecto 5',
-            image: '/Imagenes/5.webp',
-            category: 'Prototipo'
+          id: 5,
+          name: "Proyecto 5",
+          description: "Descripción del proyecto 5",
+          image: "/Imagenes/mockup3.png",
+          category: "Web",
+        },
+        {
+          id: 6, 
+          name: "Proyecto 6",
+          description: "Descripción del proyecto 5",
+          image: "/Imagenes/mockup3.png",
+          category: "Prototipo",
         }
-    ];
+      ];
 
     const categories = ['All', 'App', 'Web', 'Prototipo'];
 

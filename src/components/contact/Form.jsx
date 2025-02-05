@@ -6,6 +6,7 @@ export default function Form() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false); // Estado para manejar la habilitación del botón
 
   const formData = { email, name, message };
 
@@ -17,6 +18,8 @@ export default function Form() {
       return;
     }
 
+    setIsSubmitting(true); // Deshabilitar el botón al enviar
+
     try {
       await axios.post("https://prometheustij.com/formulario", formData);
       toast.success("Mensaje enviado exitosamente");
@@ -25,6 +28,8 @@ export default function Form() {
       setMessage("");
     } catch (error) {
       toast.error("No se pudo enviar el mensaje");
+    } finally {
+      setIsSubmitting(false); // Volver a habilitar el botón al finalizar el envío
     }
   };
 
@@ -63,8 +68,9 @@ export default function Form() {
           <button
             type="submit"
             className="px-8 py-2 bg-black hover:opacity-85 text-2xl text-white uppercase"
+            disabled={isSubmitting} // Deshabilitar el botón mientras se está enviando
           >
-            Enviar
+            {isSubmitting ? "Enviando..." : "Enviar"}  {/* Cambiar texto mientras se envía */}
           </button>
         </div>
       </form>

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 
 const Contact = ({ title, placeholder, buttonText }) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);  // Estado para manejar la habilitación del botón
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -11,18 +13,22 @@ const Contact = ({ title, placeholder, buttonText }) => {
       return;
     }
 
+    setIsSubmitting(true); // Deshabilita el botón al enviar el formulario
+
     try {
       await axios.post("https://prometheustij.com/formulario", { email });
-      toast.success("Email submitted successfully");
+      toast.success("Email sent successfully!"); // Si la solicitud es exitosa
     } catch (error) {
-      toast.error("Failed to submit email");
+      toast.error("An error occurred, please try again."); // Si ocurre un error
+    } finally {
+      setIsSubmitting(false); // Vuelve a habilitar el botón al finalizar la solicitud
     }
   };
 
   return (
     <main
       id="contact"
-      className="h-screen bg-[#39BAC8] flex justify-center items-center flex-col "
+      className="h-screen bg-[#39BAC8] flex justify-center items-center flex-col"
       style={{
         backgroundImage: "url(/Fondos/1.webp)",
         backgroundSize: "cover",
@@ -41,12 +47,13 @@ const Contact = ({ title, placeholder, buttonText }) => {
           <button
             type="submit"
             className="px-8 py-2 bg-black hover:opacity-85 text-2xl text-white uppercase"
+            disabled={isSubmitting} // Deshabilita el botón mientras se está enviando
           >
-            {buttonText}
+            {isSubmitting ? "Sending..." : buttonText}
           </button>
         </div>
-        <Toaster position="top-right" />
       </form>
+      <Toaster position="top-right" />
     </main>
   );
 };
