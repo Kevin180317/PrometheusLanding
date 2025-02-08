@@ -168,9 +168,9 @@ export const ui = {
     "link.contact": "/contact",
     "link.term": "/terms",
     "link.policy": "/privacy",
-    "link.services.web": "/en/prices/web/",
-    "link.services.app": "/en/prices/app/",
-    "link.services.prot": "/en/prices/prototipo/",
+    "link.services.web": "/prices/web/",
+    "link.services.app": "/prices/app/",
+    "link.services.prot": "/prices/prototipo/",
     "term.title": "Términos y condiciones",
     "term.use.title": "Uso del Sitio Web",
     "term.use.info":
