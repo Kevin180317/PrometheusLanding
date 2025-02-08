@@ -261,7 +261,7 @@ export default function Product() {
                 </button>
                 <a
                   href="/contact"
-                  className="px-6 py-2 bg-[#39BAC8] text-white rounded-lg hover:bg-[#2A9D8F] transition"
+                  className="px-6 py-2 bg-[#39BAC8]  text-white rounded-lg hover:bg-[#2A9D8F] transition"
                 >
                   Cotizar
                 </a>
