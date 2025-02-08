@@ -41,7 +41,7 @@ const URL = Astro.url.pathname;
     <Logo class="w-32 h-32" />
   </a>
   {
-    URL === "/" ? (
+    URL === "/" || URL === "/en/" ? (
       <div class="hidden md:flex">
         {links.map((link) => (
           <a href={link.href} class="text-3xl px-4 hover:opacity-75">
@@ -51,7 +51,10 @@ const URL = Astro.url.pathname;
       </div>
     ) : URL === "/prices/web/" ||
       URL === "/prices/app/" ||
-      URL === "/prices/prototipo/" ? (
+      URL === "/prices/prototipo/" ||
+      URL === "/en/prices/web/" ||
+      URL === "/en/prices/app/" ||
+      URL === "/en/prices/prototipo/" ? (
       <div class="hidden md:flex">
         {prices.map((link) => (
           <a href={link.href} class="text-3xl px-4 hover:opacity-75">

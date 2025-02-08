@@ -1,0 +1,19 @@
+---
+import Prices from "@Components/prices/Hero.astro";
+import Product from "@Components/prices/Product";
+import Layout from "@Layouts/Layout.astro";
+import { getLangFromUrl, useTranslations } from "@src/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="PrometheusTij - Prices">
+  <Product
+    client:load
+    categoria="App"
+    AppDesc1={t("product.app.desc1")}
+    AppDesc2={t("product.app.desc2")}
+  />
+  <!-- <Prices /> -->
+</Layout>

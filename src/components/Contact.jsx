@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 
-const Contact = ({ title, buttonText }) => {
+const Contact = ({
+  title,
+  buttonText,
+  placeholder1,
+  placeholder2,
+  placeholder3,
+}) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -51,7 +57,7 @@ const Contact = ({ title, buttonText }) => {
             type="text"
             name="name"
             id="name"
-            placeholder="Nombre completo"
+            placeholder={placeholder1}
             required
           />
           <input
@@ -59,14 +65,14 @@ const Contact = ({ title, buttonText }) => {
             type="email"
             name="email"
             id="email"
-            placeholder="Correo electronico"
+            placeholder={placeholder2}
             required
           />
           <textarea
             className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#39BAC8] focus:border-transparent transition-all"
             name="message"
             id="message"
-            placeholder="Mensaje"
+            placeholder={placeholder3}
             rows="5"
             required
           ></textarea>

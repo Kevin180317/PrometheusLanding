@@ -20,6 +20,8 @@ export const ui = {
     "service.apps": "App development",
     "service.web": "Web development",
     "service.prototypes": "Prototypes development",
+    "service.about":
+      "We offer customized digital solutions to boost your business. From web development and mobile applications to innovative prototypes, we are here to help you achieve your goals.",
     "work.title": "We want to work with you",
     "work.basic": "Basic",
     "work.professional": "Professional",
@@ -32,7 +34,9 @@ export const ui = {
       "WE ARE A 100% TIJUANA COMPANY THAT KNOWS THE BINATIONAL DYNAMISM.",
     "about.subtitle": "OUR GROUP OF EXPERTS WILL ADAPT TO YOUR REQUIREMENTS.",
     "contact.title": "Contact",
-    "contact.placeholder": "Enter your email",
+    "contact.placeholder1": "Full name",
+    "contact.placeholder2": "E-mail",
+    "contact.placeholder3": "Your message",
     "contact.button": "Send",
     "404.title": "404 - Page not found",
     "404.subtitle": "The page you are looking for does not exist",
@@ -97,6 +101,24 @@ export const ui = {
     "footer.contact": "Contact",
     "footer.copy": "Prometheus R&D Tijuana. All rights reserved.",
     "contact.page.title": "Contact",
+    "product.app.desc1":
+      "Mobile application for your favorite pet's information",
+    "product.app.desc2":
+      "App designed to facilitate the search of recipes for the home.",
+    "product.web.desc1":
+      "Interactive website with a modern and accessible interface for stores focused on the sale of coffee.",
+    "product.web.desc2":
+      "Web platform optimized for e-commerce focused on physicians.",
+    "product.web.desc3":
+      "Minimalistic portfolio website for people focused on photography.",
+    "product.web.desc4": "E-commerce item purchase functionality in React",
+    "product.web.desc5":
+      "LandingPage focused on a client with a furniture business.",
+    "product.web.desc6":
+      "LandingPage focused on a client with a furniture business.",
+    "product.prot.desc1":
+      "Advanced prototype to validate business ideas with users.",
+    "product.prot.desc2": "High quality 3D printing.",
   },
   es: {
     "nav.home": "Inicio",
@@ -112,6 +134,8 @@ export const ui = {
     "service.apps": "Desarollo de apps",
     "service.web": "Desarollo web",
     "service.prototypes": "Desarollo de prototipos",
+    "service.about":
+      "Ofrecemos soluciones digitales personalizadas para impulsar tu negocio. Desde desarrollo web y aplicaciones móviles hasta prototipos innovadores, estamos aquí para ayudarte a alcanzar tus objetivos.",
     "work.title": "Queremos trabajar contigo",
     "work.basic": "Básico",
     "work.professional": "Profesional",
@@ -125,7 +149,9 @@ export const ui = {
     "about.subtitle":
       "NUESTRO GRUPO DE EXPERTOS SE ADAPTARAN A TUS REQUERIMIENTOS.",
     "contact.title": "Contacto",
-    "contact.placeholder": "Ingresa tu correo electrónico",
+    "contact.placeholder1": "Nombre completo",
+    "contact.placeholder2": "Correo electrónico",
+    "contact.placeholder3": "Tu mensaje",
     "contact.button": "Enviar",
     "404.title": "404 - Página no encontrada",
     "404.subtitle": "La página que buscas no existe",
@@ -192,5 +218,24 @@ export const ui = {
     "contact.page.title": "Contáctanos",
     "contact.page.info":
       "¿Tienes alguna pregunta o comentario? ¡Estamos aquí para ayudarte!",
+    "product.app.desc1":
+      "Aplicación móvil para la informacion de tu mascota favorita",
+    "product.app.desc2":
+      "App diseñada para facilitar la busqueda de recetas para el hogar.",
+    "product.web.desc1":
+      "Sitio web interactivo con una interfaz moderna y accesible para tiendas enfocadas a la venta del cafe",
+    "product.web.desc2":
+      "Plataforma web optimizada para el e-commerce enfocada a los medicos.",
+    "product.web.desc3":
+      "Web minimalista para el uso de portafolio para personas enfocada a la fotografia.",
+    "product.web.desc4":
+      "Funcionalidad de la compra de articulos de un e-commerce en React",
+    "product.web.desc5":
+      "LandingPage enfocada a un cliente con el giro de Muebleria",
+    "product.web.desc6":
+      "LandingPage enfocada a un cliente con el giro de Muebleria",
+    "product.prot.desc1":
+      "Prototipo avanzado para validar ideas de negocio con usuarios.",
+    "product.prot.desc2": "Impresiones 3D de alta calidad.",
   },
 } as const;

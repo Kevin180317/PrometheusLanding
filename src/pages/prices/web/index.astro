@@ -2,9 +2,22 @@
 import Prices from "@Components/prices/Hero.astro";
 import Product from "@Components/prices/Product";
 import Layout from "@Layouts/Layout.astro";
+import { getLangFromUrl, useTranslations } from "@src/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout title="PrometheusTij - Prices">
-  <Product client:load categoria="Web" />
+  <Product
+    client:load
+    categoria="Web"
+    WebDesc1={t("product.web.desc1")}
+    WebDesc2={t("product.web.desc2")}
+    WebDesc3={t("product.web.desc3")}
+    WebDesc4={t("product.web.desc4")}
+    WebDesc5={t("product.web.desc5")}
+    WebDesc6={t("product.web.desc6")}
+  />
   <!-- <Prices /> -->
 </Layout>

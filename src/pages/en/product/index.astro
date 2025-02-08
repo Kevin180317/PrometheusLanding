@@ -1,8 +1,24 @@
 ---
 import Layout from "@Layouts/Layout.astro";
 import Product from "@Components/product/Product";
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout title="Product">
-  <Product client:load />
+  <Product
+    client:load
+    AppDesc1={t("product.app.desc1")}
+    AppDesc2={t("product.app.desc2")}
+    WebDesc1={t("product.web.desc1")}
+    WebDesc2={t("product.web.desc2")}
+    WebDesc3={t("product.web.desc3")}
+    WebDesc4={t("product.web.desc4")}
+    WebDesc5={t("product.web.desc5")}
+    WebDesc6={t("product.web.desc6")}
+    ProtDesc1={t("product.prot.desc1")}
+    ProtDesc2={t("product.prot.desc2")}
+  />
 </Layout>

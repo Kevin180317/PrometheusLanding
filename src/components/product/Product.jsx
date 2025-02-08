@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 
-export default function Product() {
+export default function Product({
+  AppDesc1,
+  AppDesc2,
+  WebDesc1,
+  WebDesc2,
+  WebDesc3,
+  WebDesc4,
+  WebDesc5,
+  WebDesc6,
+  ProtDesc1,
+  ProtDesc2,
+}) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -10,17 +21,19 @@ export default function Product() {
     {
       id: 1,
       name: "PetSafe",
-      description:
-        "Aplicación móvil para la informacion de tu mascota favorita",
-      images: ["/Imagenes/app1.png", "/Imagenes/app1.2.png", "/Imagenes/app1.3.png"], // Varias imágenes
+      description: AppDesc1,
+      images: [
+        "/Imagenes/app1.png",
+        "/Imagenes/app1.2.png",
+        "/Imagenes/app1.3.png",
+      ], // Varias imágenes
       category: "App",
       projectUrl: "/proyecto-1",
     },
     {
       id: 2,
       name: "CetoTj",
-      description:
-        "Sitio web interactivo con una interfaz moderna y accesible para tiendas enfocadas a la venta del cafe",
+      description: WebDesc1,
       images: ["/Imagenes/mockup1.png", "/Imagenes/mockup2.png"],
       category: "Web",
       projectUrl: "https://cetotj.netlify.app/",
@@ -28,17 +41,19 @@ export default function Product() {
     {
       id: 3,
       name: "Recipe-Book",
-      description:
-        "App diseñada para facilitar la busqueda de recetas para el hogar.",
-      images: ["/Imagenes/app2.png", "/Imagenes/app2.2.png", "/Imagenes/app2.3.png"],
+      description: AppDesc2,
+      images: [
+        "/Imagenes/app2.png",
+        "/Imagenes/app2.2.png",
+        "/Imagenes/app2.3.png",
+      ],
       category: "App",
       projectUrl: "/proyecto-3",
     },
     {
       id: 4,
       name: "Medical-Commerce",
-      description:
-        "Plataforma web optimizada para el e-commerce enfocada a los medicos.",
+      description: WebDesc2,
       images: ["/Imagenes/mockup2.png", "/Imagenes/mockup4.png"],
       category: "Web",
       projectUrl: "https://medical-commerce.netlify.app/",
@@ -46,8 +61,7 @@ export default function Product() {
     {
       id: 5,
       name: "Portfolio Photography-John",
-      description:
-        "Web minimalista para el uso de portafolio para personas enfocada a la fotografia.",
+      description: WebDesc3,
       images: ["/Imagenes/mockup3.png", "/Imagenes/mockup5.png"],
       category: "Web",
       projectUrl: "https://photography-john.netlify.app/",
@@ -55,25 +69,33 @@ export default function Product() {
     {
       id: 6,
       name: "Prototipado",
-      description:
-        "Prototipo avanzado para validar ideas de negocio con usuarios.",
-      images: ["/Imagenes/Prototipado.jpg", "/Imagenes/protipo1.jpg", "/Imagenes/protipo2.jpg", "/Imagenes/protipo3.jpg"],
+      description: ProtDesc1,
+      images: [
+        "/Imagenes/Prototipado.jpg",
+        "/Imagenes/protipo1.jpg",
+        "/Imagenes/protipo2.jpg",
+        "/Imagenes/protipo3.jpg",
+      ],
       category: "Prototipo",
       projectUrl: "/proyecto-6",
     },
     {
       id: 7,
-      name: "Impresiones 3D",
-      description: "Impresiones 3D de alta calidad.",
-      images: ["/Imagenes/3D.jpg", "/Imagenes/3d_1.jpg", "/Imagenes/3d_2.jpg", "/Imagenes/3d_3.jpg"],
+      name: ProtDesc2,
+      description: ProtDesc2,
+      images: [
+        "/Imagenes/3D.jpg",
+        "/Imagenes/3d_1.jpg",
+        "/Imagenes/3d_2.jpg",
+        "/Imagenes/3d_3.jpg",
+      ],
       category: "Prototipo",
       projectUrl: "/proyecto-6",
     },
     {
       id: 8,
-      name: "Demo E-commerce",
-      description:
-        "Funcionalidad de la compra de articulos de un e-commerce en React",
+      name: WebDesc5,
+      description: WebDesc4,
       images: ["/Imagenes/demo-ecommerce.png"],
       category: "Web",
       projectUrl: "https://demo-ecommercebc.netlify.app/",
@@ -81,7 +103,7 @@ export default function Product() {
     {
       id: 9,
       name: "Akerlundh",
-      description: "LandingPage enfocada a un cliente con el giro de Muebleria",
+      description: WebDesc5,
       images: ["/Imagenes/akerlun.png"],
       category: "Web",
       projectUrl: "https://akerlundh.netlify.app/",
@@ -89,7 +111,7 @@ export default function Product() {
     {
       id: 10,
       name: "profurniture",
-      description: "LandingPage enfocada a un cliente con el giro de Muebleria",
+      description: WebDesc6,
       images: ["/Imagenes/forniture.png"],
       category: "Web",
       projectUrl: "https://profurniture.netlify.app/",

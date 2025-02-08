@@ -9,7 +9,7 @@ import About from "@Components/About.astro";
 import Banner from "@Components/Banner.astro";
 import Contact from "@Components/Contact";
 
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getLangFromUrl, useTranslations } from "@src/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -26,6 +26,9 @@ const t = useTranslations(lang);
     <Contact
       client:load
       title={t("contact.title")}
+      placeholder1={t("contact.placeholder1")}
+      placeholder2={t("contact.placeholder2")}
+      placeholder3={t("contact.placeholder3")}
       buttonText={t("contact.button")}
     />
   </Container>
