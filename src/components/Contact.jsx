@@ -36,7 +36,7 @@ const Contact = ({ title, buttonText }) => {
   return (
     <main
       id="contact"
-      className="min-h-screen flex justify-center items-center flex-col bg-cover bg-center"
+      className="min-h-screen flex justify-center items-center flex-col bg-cover bg-center px-8"
       style={{
         backgroundImage: "url(/Fondos/1.webp)",
       }}
