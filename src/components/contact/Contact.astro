@@ -1,6 +1,10 @@
 ---
 import Info from "@Components/contact/Info.jsx";
 import Form from "@Components/contact/Form.jsx";
+import { getLangFromUrl, useTranslations } from "@src/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div class="min-h-screen flex justify-center items-center hero py-12 px-6">
@@ -11,10 +15,9 @@ import Form from "@Components/contact/Form.jsx";
     <div
       class="bg-gray-800 p-8 flex flex-col justify-center items-center text-white text-center"
     >
-      <h1 class="text-5xl font-bold mb-8">¡Queremos trabajar contigo!</h1>
+      <h1 class="text-5xl font-bold mb-8">{t("contact.page.title")}</h1>
       <p class="text-xl mb-8">
-        Estamos listos para convertir tus ideas en realidad. ¡Contáctanos y
-        comencemos a colaborar!
+        {t("contact.page.about")}
       </p>
       <div class="w-full">
         <Info />
@@ -23,7 +26,18 @@ import Form from "@Components/contact/Form.jsx";
 
     <!-- Sección del Formulario -->
     <div class="p-8 bg-gray-50">
-      <Form client:visible />
+      <Form
+        client:visible
+        title={t("contact.page.form.title")}
+        placeholder1={t("contact.page.form.placeholder1")}
+        placeholder2={t("contact.page.form.placeholder2")}
+        placeholder3={t("contact.page.form.placeholder3")}
+        button={t("contact.button")}
+        buttonSending={t("contact.button.sending")}
+        buttonError1={t("contact.button.error1")}
+        buttonError2={t("contact.button.error2")}
+        buttonSuccess={t("contact.button.success")}
+      />
     </div>
   </div>
 </div>

@@ -11,6 +11,8 @@ export default function Product({
   WebDesc6,
   ProtDesc1,
   ProtDesc2,
+  CloseButton,
+  QuoteButton,
 }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
@@ -279,13 +281,13 @@ export default function Product({
                   onClick={closeModal}
                   className="px-6 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 transition"
                 >
-                  Cerrar
+                  {CloseButton}
                 </button>
                 <a
                   href="/contact"
                   className="px-6 py-2 bg-[#39BAC8]  text-white rounded-lg hover:bg-[#2A9D8F] transition"
                 >
-                  Cotizar
+                  {QuoteButton}
                 </a>
               </div>
             </div>

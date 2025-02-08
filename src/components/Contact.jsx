@@ -8,6 +8,10 @@ const Contact = ({
   placeholder1,
   placeholder2,
   placeholder3,
+  buttonSending,
+  buttonError1,
+  buttonError2,
+  buttonSuccess,
 }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -18,7 +22,7 @@ const Contact = ({
     const message = e.target.message.value;
 
     if (!name || !email || !message) {
-      toast.error("Por favor completa todos los campos");
+      toast.error(buttonError1);
       return;
     }
 
@@ -30,10 +34,10 @@ const Contact = ({
         email,
         message,
       });
-      toast.success("¡Mensaje enviado exitosamente!");
+      toast.success(buttonSuccess);
       e.target.reset(); // Limpiar el formulario después del envío
     } catch (error) {
-      toast.error("Ocurrió un error, por favor intenta de nuevo.");
+      toast.error(buttonError2);
     } finally {
       setIsSubmitting(false);
     }
@@ -84,7 +88,7 @@ const Contact = ({
             {isSubmitting ? (
               <div className="flex items-center justify-center gap-2">
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                Enviando...
+                {buttonSending}
               </div>
             ) : (
               buttonText
