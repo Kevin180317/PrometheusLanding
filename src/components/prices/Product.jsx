@@ -11,7 +11,7 @@ export default function Product({ categoria }) {
       name: "PetSafe",
       description:
         "Aplicación móvil para la informacion de tu mascota favorita",
-      images: ["/Imagenes/app1.png", "/Imagenes/mockup1.png"], // Varias imágenes
+      images: ["/Imagenes/app1.png", "/Imagenes/app1.2.png", "/Imagenes/app1.3.png"], // Varias imágenes
       category: "App",
       projectUrl: "/proyecto-1",
     },
@@ -29,7 +29,7 @@ export default function Product({ categoria }) {
       name: "Recipe-Book",
       description:
         "App diseñada para facilitar la busqueda de recetas para el hogar.",
-      images: ["/Imagenes/app2.png", "/Imagenes/mockup3.png"],
+      images: ["/Imagenes/app2.png", "/Imagenes/app2.2.png", "/Imagenes/app2.3.png"],
       category: "App",
       projectUrl: "/proyecto-3",
     },
@@ -56,7 +56,7 @@ export default function Product({ categoria }) {
       name: "Prototipado",
       description:
         "Prototipo avanzado para validar ideas de negocio con usuarios.",
-      images: ["/Imagenes/mockup4.png", "/Imagenes/mockup6.png"],
+      images: ["/Imagenes/Prototipado.jpg", "/Imagenes/protipo1.jpg", "/Imagenes/protipo2.jpg", "/Imagenes/protipo3.jpg"],
       category: "Prototipo",
       projectUrl: "/proyecto-6",
     },
@@ -64,7 +64,7 @@ export default function Product({ categoria }) {
       id: 7,
       name: "Impresiones 3D",
       description: "Impresiones 3D de alta calidad.",
-      images: ["/Imagenes/mockup4.png", "/Imagenes/mockup6.png"],
+      images: ["/Imagenes/3D.jpg", "/Imagenes/3d_1.jpg", "/Imagenes/3d_2.jpg", "/Imagenes/3d_3.jpg"],
       category: "Prototipo",
       projectUrl: "/proyecto-6",
     },
