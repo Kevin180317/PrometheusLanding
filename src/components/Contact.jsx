@@ -29,7 +29,7 @@ const Contact = ({
     setIsSubmitting(true);
 
     try {
-      await axios.post("https://prometheustij.com/formulario", {
+      await axios.post(import.meta.env.FORMULARIO_URL, {
         name,
         email,
         message,

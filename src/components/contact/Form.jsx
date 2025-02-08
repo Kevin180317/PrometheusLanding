@@ -31,7 +31,7 @@ export default function Form({
     setIsSubmitting(true);
 
     try {
-      await axios.post("https://prometheustij.com/formulario", formData);
+      await axios.post(import.meta.env.FORMULARIO_URL, formData);
       toast.success(buttonSuccess);
       setEmail("");
       setName("");
