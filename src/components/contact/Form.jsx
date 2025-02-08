@@ -6,19 +6,19 @@ export default function Form() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false); // Estado para manejar la habilitación del botón
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const formData = { email, name, message };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!email) {
-      toast.error("Por favor ingresa un correo válido");
+    if (!email || !name || !message) {
+      toast.error("Por favor completa todos los campos");
       return;
     }
 
-    setIsSubmitting(true); // Deshabilitar el botón al enviar
+    setIsSubmitting(true);
 
     try {
       await axios.post("https://prometheustij.com/formulario", formData);
@@ -29,15 +29,17 @@ export default function Form() {
     } catch (error) {
       toast.error("No se pudo enviar el mensaje");
     } finally {
-      setIsSubmitting(false); // Volver a habilitar el botón al finalizar el envío
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="flex flex-col justify-center items-center rounded-md bg-[#39BAC8] p-8 m-8 max-w-full">
-      <h1 className="text-3xl font-bold text-center">Formulario de contacto</h1>
+    <div className="flex flex-col justify-center items-center rounded-2xl bg-white shadow-2xl p-8 max-w-full w-full">
+      <h1 className="text-4xl font-bold text-[#39BAC8] mb-6 text-center">
+        Formulario de Contacto
+      </h1>
       <form onSubmit={handleSubmit} className="w-full max-w-lg">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-6">
           <input
             type="text"
             id="name"
@@ -45,16 +47,16 @@ export default function Form() {
             name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="p-2.5 px-8 py-3 border border-black focus:outline-none text-black w-full"
+            className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#39BAC8] focus:border-transparent transition-all"
           />
           <input
             type="email"
             name="email"
             id="email"
-            placeholder="Correo"
+            placeholder="Correo Electrónico"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="p-2.5 px-8 py-3 border border-black focus:outline-none text-black w-full"
+            className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#39BAC8] focus:border-transparent transition-all"
           />
           <textarea
             name="message"
@@ -62,15 +64,22 @@ export default function Form() {
             placeholder="Mensaje"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="p-2.5 px-8 py-3 border border-black focus:outline-none text-black w-full"
+            className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#39BAC8] focus:border-transparent transition-all"
             rows="5"
           ></textarea>
           <button
             type="submit"
-            className="px-8 py-2 bg-black hover:opacity-85 text-2xl text-white uppercase"
-            disabled={isSubmitting} // Deshabilitar el botón mientras se está enviando
+            className="px-8 py-3 bg-[#39BAC8] hover:bg-[#2A9D8F] text-white text-xl font-semibold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={isSubmitting}
           >
-            {isSubmitting ? "Enviando..." : "Enviar"}  {/* Cambiar texto mientras se envía */}
+            {isSubmitting ? (
+              <div className="flex items-center justify-center gap-2">
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                Enviando...
+              </div>
+            ) : (
+              "Enviar"
+            )}
           </button>
         </div>
       </form>

@@ -15,34 +15,40 @@ const services = [
     id: 2,
     title: t("service.prototypes"),
     image: "/Imagenes/4.jpg",
+    href: "/prices/prototipo/", // Añadido un href para consistencia
   },
   {
     id: 3,
     title: t("service.apps"),
     image: "/Imagenes/5.webp",
+    href: "/prices/apps/", // Añadido un href para consistencia
   },
 ];
 ---
 
-<main class="md:h-screen text-white px-16 py-16 bg-[#39BAC8] service">
-  <h1 class="text-7xl text-center mb-8">
+<main class="min-h-screen text-white px-8 py-16 bg-[#39BAC8] service">
+  <h1 class="text-7xl text-center mb-8 font-bold">
     {t("service.title")}
   </h1>
-  <p class="mb-8 text-2xl text-center">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil obcaecati,
-    dolores fugiat suscipit amet maxime. Aliquam quasi deserunt assumenda
-    cupiditate tenetur hic ex odit!
+  <p class="mb-12 text-2xl text-center max-w-2xl mx-auto">
+    Ofrecemos soluciones digitales personalizadas para impulsar tu negocio.
+    Desde desarrollo web y aplicaciones móviles hasta prototipos innovadores,
+    estamos aquí para ayudarte a alcanzar tus objetivos.
   </p>
-  <div class="flex flex-col md:flex-row md:justify-between items-center gap-4">
+  <div class="flex flex-col md:flex-row md:justify-center items-center gap-8">
     {
-      services.map((index) => (
-        <div>
-          <img src={index.image} alt="" class="md:h-96" />
+      services.map((service) => (
+        <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
+          <img
+            src={service.image}
+            alt={service.title}
+            class="w-full h-64 object-cover"
+          />
           <a
-            href={index.href}
-            class="flex justify-center items-center text-2xl bg-gray-800 text-white h-24"
+            href={service.href}
+            class="flex justify-center items-center text-2xl font-semibold bg-gray-800 text-white h-20 hover:bg-gray-700 transition-colors duration-300"
           >
-            {index.title}
+            {service.title}
           </a>
         </div>
       ))
@@ -54,5 +60,6 @@ const services = [
   .service {
     background-image: url("/Fondos/5.webp");
     background-size: cover;
+    background-position: center;
   }
 </style>

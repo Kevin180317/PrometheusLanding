@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
-export default function Product({ categoria }) {
+export default function Product() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const projects = [
     {
@@ -95,16 +96,19 @@ export default function Product({ categoria }) {
     },
   ];
 
-  const filteredProjects = projects.filter(
-    (project) => project.category === categoria
-  );
+  const categories = ["All", "App", "Web", "Prototipo"];
+
+  const filteredProjects =
+    selectedCategory === "All"
+      ? projects
+      : projects.filter((project) => project.category === selectedCategory);
 
   const handleImageClick = (project) => {
     if (project.category === "Web") {
       window.open(project.projectUrl, "_blank");
     } else {
       setSelectedProject(project);
-      setSelectedImageIndex(0);
+      setCurrentImageIndex(0); // Reiniciar el índice de la imagen
       setIsModalOpen(true);
     }
   };
@@ -114,74 +118,87 @@ export default function Product({ categoria }) {
     setSelectedProject(null);
   };
 
-  const handleNextImage = () => {
-    setSelectedImageIndex(
-      (prevIndex) => (prevIndex + 1) % selectedProject.images.length
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === selectedProject.images.length - 1 ? 0 : prevIndex + 1
     );
   };
 
-  const handlePrevImage = () => {
-    setSelectedImageIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + selectedProject.images.length) %
-        selectedProject.images.length
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? selectedProject.images.length - 1 : prevIndex - 1
     );
   };
 
   return (
-    <main>
-      <section className="p-8 bg-gray-50 h-screen">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredProjects.map((project) => (
+    <div className="p-8 min-h-screen bg-gray-50">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-12">
+          <label
+            htmlFor="category"
+            className="block text-xl font-semibold text-gray-900 mb-3"
+          >
+            Explorar proyectos de:
+          </label>
+          <select
+            id="category"
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-lg"
+          >
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {filteredProjects.map((project) => (
+            <div
+              key={project.id}
+              className="group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out overflow-hidden"
+            >
               <div
-                key={project.id}
-                className="group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out overflow-hidden"
+                className="relative h-72 overflow-hidden cursor-pointer"
+                onClick={() => handleImageClick(project)}
               >
-                <div
-                  className="relative h-72 overflow-hidden cursor-pointer"
-                  onClick={() => handleImageClick(project)}
-                >
-                  <img
-                    src={project.images[0]}
-                    alt={project.name}
-                    className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <div className="space-y-3 text-white">
-                      <div className="inline-flex items-center px-3 py-1.5 bg-indigo-500/90 rounded-full text-sm font-medium">
-                        {project.category}
-                      </div>
-                      <h3 className="text-2xl font-bold leading-tight">
-                        {project.name}
-                      </h3>
-                      {project.category === "Web" && (
-                        <p className="text-gray-200 line-clamp-3">
-                          {project.description}
-                        </p>
-                      )}
-                    </div>
+                <img
+                  src={project.images[0]}
+                  alt={project.name}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                  <div className="text-white">
+                    <h3 className="text-2xl font-bold">{project.name}</h3>
+                    {project.category === "Web" && (
+                      <p className="text-gray-200">{project.description}</p>
+                    )}
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
 
       {isModalOpen && selectedProject && (
         <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-lg max-w-lg w-full overflow-hidden">
-            <div className="relative">
+          <div className="bg-white rounded-2xl shadow-lg max-w-lg w-full overflow-hidden relative">
+            {/* Contenedor del carrusel */}
+            <div className="relative w-full h-64">
               <img
-                src={selectedProject.images[selectedImageIndex]}
+                src={selectedProject.images[currentImageIndex]}
                 alt={selectedProject.name}
-                className="w-full h-64 object-cover"
+                className="w-full h-full object-cover"
               />
+
+              {/* Botón Anterior */}
               <button
-                onClick={handlePrevImage}
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full"
+                onClick={prevImage}
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100 transition"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -201,9 +218,11 @@ export default function Product({ categoria }) {
                   <path d="M5 12l6 -6" />
                 </svg>
               </button>
+
+              {/* Botón Siguiente */}
               <button
-                onClick={handleNextImage}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full"
+                onClick={nextImage}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100 transition"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -224,6 +243,8 @@ export default function Product({ categoria }) {
                 </svg>
               </button>
             </div>
+
+            {/* Contenido del modal */}
             <div className="p-6">
               <h3 className="text-2xl font-bold mb-2">
                 {selectedProject.name}
@@ -234,13 +255,13 @@ export default function Product({ categoria }) {
               <div className="flex justify-end gap-4">
                 <button
                   onClick={closeModal}
-                  className="px-6 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 transition-colors"
+                  className="px-6 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 transition"
                 >
                   Cerrar
                 </button>
                 <a
                   href="/contact"
-                  className="px-6 py-2 bg-[#39BAC8] text-white rounded-lg hover:bg-[#2A9D8F] transition-colors"
+                  className="px-6 py-2 bg-[#39BAC8] text-white rounded-lg hover:bg-[#2A9D8F] transition"
                 >
                   Cotizar
                 </a>
@@ -249,6 +270,6 @@ export default function Product({ categoria }) {
           </div>
         </div>
       )}
-    </main>
+    </div>
   );
 }

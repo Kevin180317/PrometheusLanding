@@ -2,54 +2,87 @@ import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 
-const Contact = ({ title, placeholder, buttonText }) => {
-  const [isSubmitting, setIsSubmitting] = useState(false);  // Estado para manejar la habilitación del botón
+const Contact = ({ title, buttonText }) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const name = e.target.name.value;
     const email = e.target.email.value;
-    if (!email) {
-      toast.error("Please enter a valid email");
+    const message = e.target.message.value;
+
+    if (!name || !email || !message) {
+      toast.error("Por favor completa todos los campos");
       return;
     }
 
-    setIsSubmitting(true); // Deshabilita el botón al enviar el formulario
+    setIsSubmitting(true);
 
     try {
-      await axios.post("https://prometheustij.com/formulario", { email });
-      toast.success("Email sent successfully!"); // Si la solicitud es exitosa
+      await axios.post("https://prometheustij.com/formulario", {
+        name,
+        email,
+        message,
+      });
+      toast.success("¡Mensaje enviado exitosamente!");
+      e.target.reset(); // Limpiar el formulario después del envío
     } catch (error) {
-      toast.error("An error occurred, please try again."); // Si ocurre un error
+      toast.error("Ocurrió un error, por favor intenta de nuevo.");
     } finally {
-      setIsSubmitting(false); // Vuelve a habilitar el botón al finalizar la solicitud
+      setIsSubmitting(false);
     }
   };
 
   return (
     <main
       id="contact"
-      className="h-screen bg-[#39BAC8] flex justify-center items-center flex-col"
+      className="min-h-screen flex justify-center items-center flex-col bg-cover bg-center"
       style={{
         backgroundImage: "url(/Fondos/1.webp)",
-        backgroundSize: "cover",
       }}
     >
-      <h1 className="text-6xl mb-8 font-bold text-white">{title}</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="flex">
+      <h1 className="text-5xl md:text-6xl font-bold text-white text-center mb-8">
+        {title}
+      </h1>
+      <form onSubmit={handleSubmit} className="w-full max-w-lg">
+        <div className="flex flex-col gap-6">
           <input
-            className="p-2.5 px-8 py-3 border border-black focus:outline-none text-black"
+            className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#39BAC8] focus:border-transparent transition-all"
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Nombre completo"
+            required
+          />
+          <input
+            className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#39BAC8] focus:border-transparent transition-all"
             type="email"
             name="email"
             id="email"
-            placeholder={placeholder}
+            placeholder="Correo electronico"
+            required
           />
+          <textarea
+            className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#39BAC8] focus:border-transparent transition-all"
+            name="message"
+            id="message"
+            placeholder="Mensaje"
+            rows="5"
+            required
+          ></textarea>
           <button
             type="submit"
-            className="px-8 py-2 bg-black hover:opacity-85 text-2xl text-white uppercase"
-            disabled={isSubmitting} // Deshabilita el botón mientras se está enviando
+            className="px-8 py-3 bg-black text-white text-xl font-semibold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={isSubmitting}
           >
-            {isSubmitting ? "Sending..." : buttonText}
+            {isSubmitting ? (
+              <div className="flex items-center justify-center gap-2">
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                Enviando...
+              </div>
+            ) : (
+              buttonText
+            )}
           </button>
         </div>
       </form>
