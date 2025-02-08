@@ -48,6 +48,9 @@ export const ui = {
     "link.contact": "/en/contact",
     "link.term": "/en/terms",
     "link.policy": "/en/privacy",
+    "link.services.web": "/en/prices/web/",
+    "link.services.app": "/en/prices/app/",
+    "link.services.prot": "/en/prices/prototipo/",
     "term.title": "Terms & conditions",
     "term.use.title": "Use of the website",
     "term.use.info":
@@ -119,6 +122,8 @@ export const ui = {
     "product.prot.desc1":
       "Advanced prototype to validate business ideas with users.",
     "product.prot.desc2": "High quality 3D printing.",
+    "button.close": "Close",
+    "button.quote": "Quote",
   },
   es: {
     "nav.home": "Inicio",
@@ -163,6 +168,9 @@ export const ui = {
     "link.contact": "/contact",
     "link.term": "/terms",
     "link.policy": "/privacy",
+    "link.services.web": "/en/prices/web/",
+    "link.services.app": "/en/prices/app/",
+    "link.services.prot": "/en/prices/prototipo/",
     "term.title": "Términos y condiciones",
     "term.use.title": "Uso del Sitio Web",
     "term.use.info":
@@ -237,5 +245,7 @@ export const ui = {
     "product.prot.desc1":
       "Prototipo avanzado para validar ideas de negocio con usuarios.",
     "product.prot.desc2": "Impresiones 3D de alta calidad.",
+    "button.close": "Cerrar",
+    "button.quote": "Cotizar",
   },
 } as const;
