@@ -29,7 +29,7 @@ const Contact = ({
     setIsSubmitting(true);
 
     try {
-      await axios.post(import.meta.env.FORMULARIO_URL, {
+      await axios.post(import.meta.env.PUBLIC_FORMULARIO_URL, {
         name,
         email,
         message,
