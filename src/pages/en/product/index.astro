@@ -7,7 +7,11 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title="Product">
+<Layout
+  title="PrometheusTij || Product - Digital Services and Solutions"
+  description="Discover our digital development services, including web, app, and custom prototype creation. Innovation and high impact in every project."
+  keywords="product, digital services, web development, app development, digital prototypes, technological innovation, custom solutions, digital impact, web design"
+>
   <Product
     client:load
     AppDesc1={t("product.app.desc1")}

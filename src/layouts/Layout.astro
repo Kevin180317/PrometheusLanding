@@ -5,12 +5,15 @@ import "@fonts/MYRIADPRO-REGULAR.woff";
 import Header from "@Components/Header.astro";
 import Footer from "@Components/Footer.astro";
 import { getLangFromUrl } from "src/i18n/utils";
+import LanguageModal from "@Components/LanguageModal";
 
 interface Props {
   title: string;
+  description: string;
+  keywords: string;
 }
 
-const { title } = Astro.props;
+const { title, description, keywords } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 ---
@@ -22,33 +25,24 @@ const lang = getLangFromUrl(Astro.url);
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta
-      name="description"
-      content="Astro is a new kind of static site builder that delivers lightning-fast performance with a modern developer experience."
-    />
-    <meta name="author" content="Astro" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@_astrobuild" />
-    <meta name="twitter:title" content="Astro" />
-    <meta
-      name="twitter:description"
-      content="Astro is a new kind of static site builder that delivers lightning-fast performance with a modern developer experience."
-    />
-    <meta name="twitter:image" content="https://astro.build/twitter-card.jpg" />
+    <link rel="canonical" href={Astro.url} />
+    <meta name="description" content={description} />
+    <meta name="author" content="PrometheusTij" />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow" />
+    <meta name="publisher" content="PrometheusTij" />
     <meta property="og:title" content="Astro" />
-    <meta
-      property="og:description"
-      content="Astro is a new kind of static site builder that delivers lightning-fast performance with a modern developer experience."
-    />
-    <meta property="og:image" content="https://astro.build/twitter-card.jpg" />
-    <meta property="og:url" content="https://astro.build" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://prometheustij.com/ogImage.png" />
+    <meta property="og:url" content="https://prometheustij.com/" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Astro" />
+    <meta property="og:site_name" content="https://prometheustij.com/" />
     <meta name="theme-color" content="#000000" />
     <title>{title}</title>
     <ClientRouter />
   </head>
   <body class="overflow-x-hidden">
+    <LanguageModal client:load />
     <Header />
     <slot />
     <Footer />
