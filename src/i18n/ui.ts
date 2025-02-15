@@ -118,9 +118,11 @@ export const ui = {
     "footer.contact": "Contact",
     "footer.copy": "Prometheus R&D Tijuana. All rights reserved.",
     "product.app.desc1":
-      "Mobile application for your favorite pet's information",
+      "Mobile application for your favorite pet's information.",
     "product.app.desc2":
       "App designed to facilitate the search of recipes for the home.",
+      "product.app.desc3":
+      "App focused on the search for doctors and facilitating the process of scheduling appointments in the city of Tijuana.",
     "product.web.desc1":
       "Interactive website with a modern and accessible interface for stores focused on the sale of coffee.",
     "product.web.desc2":
@@ -254,6 +256,8 @@ export const ui = {
       "Aplicación móvil para la informacion de tu mascota favorita",
     "product.app.desc2":
       "App diseñada para facilitar la busqueda de recetas para el hogar.",
+      "product.app.desc3":
+"App enfocada a la busqueda de doctores y facilitar el proceso de agendar citas en la ciudad de Tijuana.",
     "product.web.desc1":
       "Sitio web interactivo con una interfaz moderna y accesible para tiendas enfocadas a la venta del cafe",
     "product.web.desc2":

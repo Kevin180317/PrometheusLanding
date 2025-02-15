@@ -6,9 +6,17 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title="404 - Página no encontrada">
+<Layout
+  title="404 - Página no encontrada"
+  description="PrometheusTij es un equipo especializado en la creación de webs, apps y prototipos innovadores con un enfoque único en la alta calidad y el impacto digital. Desarrollamos soluciones personalizadas para transformar tu visión en realidad."
+  keywords="PrometheusTij, desarrollo web, desarrollo de apps, prototipos digitales, innovación tecnológica, soluciones digitales personalizadas, impacto digital, diseño web, desarrollo de prototipos, equipo creativo digital"
+>
   <div class="h-screen bg-gray-800 flex justify-center items-center flex-col">
-    <img src="/logo.webp" alt="Logo PrometheusTij" />
+    <img
+      src="/logo.webp"
+      alt="Logo PrometheusTij - 404"
+      title="Logo PrometheusTij - 404"
+    />
     <h1 class="text-4xl md:text-7xl text-white">
       {t("404.title")}
     </h1>

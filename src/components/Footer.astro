@@ -12,7 +12,12 @@ const year = new Date().getFullYear();
     class="flex flex-col md:flex-row md:justify-between items-start md:items-start gap-4"
   >
     <div>
-      <img src="/logofooter.webp" class="h-24 w-42" alt="Company Logo" />
+      <img
+        src="/logofooter.webp"
+        class="h-24 w-42"
+        alt="Logo de Prometheustij"
+        title="Logo de Prometheustij"
+      />
       <p class="md:w-[80%] px-4">
         &copy; {year}
         {t("footer.copy")}
@@ -22,15 +27,21 @@ const year = new Date().getFullYear();
     <div class="px-4 md:px-0">
       <h2 class="text-4xl">{t("footer.about")}</h2>
       <ul class="list-none">
-        <!-- <li><a href="/history" class="hover:underline">History</a></li>
-        <li><a href="/team" class="hover:underline">Our Team</a></li> -->
+        <!-- <li><a title={t("link.products")} href="/history" class="hover:underline">History</a></li>
+        <li><a title={t("link.products")} href="/team" class="hover:underline">Our Team</a></li> -->
         <li>
-          <a href={t("link.term")} class="hover:underline"
-            >{t("footer.terms")}</a
+          <a
+            title={t("link.term")}
+            href={t("link.term")}
+            class="hover:underline">{t("footer.terms")}</a
           >
         </li>
         <li>
-          <a href={t("link.policy")} class="hover:underline">
+          <a
+            title={t("link.policy")}
+            href={t("link.policy")}
+            class="hover:underline"
+          >
             {t("footer.policy")}
           </a>
         </li>
@@ -42,8 +53,10 @@ const year = new Date().getFullYear();
       </h2>
       <ul class="list-none">
         <li>
-          <a href={t("link.products")} class="hover:underline"
-            >{t("footer.products")}</a
+          <a
+            title={t("link.products")}
+            href={t("link.products")}
+            class="hover:underline">{t("footer.products")}</a
           >
         </li>
       </ul>
@@ -54,7 +67,11 @@ const year = new Date().getFullYear();
       </h2>
       <ul class="list-none">
         <li>
-          <a href={t("link.contact")} class="hover:underline">
+          <a
+            title={t("link.contact")}
+            href={t("link.contact")}
+            class="hover:underline"
+          >
             {t("footer.contact")}
           </a>
         </li>

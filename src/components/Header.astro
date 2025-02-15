@@ -8,7 +8,6 @@ const t = useTranslations(lang);
 const links = [
   { href: t("link.home"), text: t("nav.home") },
   { href: t("link.products"), text: t("nav.products") },
-  // { href: t("link.promo"), text: t("nav.promo") },
   { href: t("link.about"), text: t("nav.about") },
   { href: t("link.contact"), text: t("nav.contact") },
 ];
@@ -37,14 +36,18 @@ const URL = Astro.url.pathname;
   class="flex justify-between items-center px-8 text-white sticky top-0
   w-full shadow-md z-10 bg-gray-800 p-4"
 >
-  <a href="/" class="flex items-center">
+  <a href="/" title="Ir al inicio" class="flex items-center">
     <Logo class="w-32 h-32" />
   </a>
   {
     URL === "/" || URL === "/en/" ? (
       <div class="hidden md:flex">
         {links.map((link) => (
-          <a href={link.href} class="text-3xl px-4 hover:opacity-75">
+          <a
+            href={link.href}
+            title={link.href}
+            class="text-3xl px-4 hover:opacity-75"
+          >
             {link.text}
           </a>
         ))}
@@ -57,7 +60,11 @@ const URL = Astro.url.pathname;
       URL === "/en/prices/prototipo/" ? (
       <div class="hidden md:flex">
         {prices.map((link) => (
-          <a href={link.href} class="text-3xl px-4 hover:opacity-75">
+          <a
+            href={link.href}
+            title={link.href}
+            class="text-3xl px-4 hover:opacity-75"
+          >
             {link.text}
           </a>
         ))}
@@ -119,13 +126,22 @@ const URL = Astro.url.pathname;
   </button>
   <div class="flex flex-col items-center mt-16 space-y-8 flex-grow">
     <div class="flex items-center">
-      <img src="/logo.webp" class="w-48 h-16" alt="Logo" />
+      <img
+        src="/logo.webp"
+        class="w-48 h-16"
+        alt="Logo de Prometheustij"
+        title="Logo de Prometheustij"
+      />
     </div>
     <div class="text-4xl font-bold">Menu</div>
     <div class="flex flex-col items-center space-y-4 flex-grow">
       {
         links.map((link) => (
-          <a href={link.href} class="text-3xl py-2 hover:opacity-75">
+          <a
+            href={link.href}
+            title={link.href}
+            class="text-3xl py-2 hover:opacity-75"
+          >
             {link.text}
           </a>
         ))

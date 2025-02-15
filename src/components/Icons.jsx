@@ -7,15 +7,20 @@ function Icons() {
   return (
     <div className="flex gap-4 px-4 py-4">
       <a
+        title="ir a facebook"
         href="https://www.facebook.com/profile.php?id=61555674795492"
         target="_blank"
       >
         <FaFacebook className="text-2xl hover:text-blue-500 hover:cursor-pointer" />
       </a>
-      <a href="https://www.instagram.com/prometheusarttij/" target="_blank">
+      <a 
+      title="ir a instagram"
+      href="https://www.instagram.com/prometheusarttij/" target="_blank">
         <FaInstagram className="text-2xl hover:text-blue-500 hover:cursor-pointer" />
       </a>
-      <a href="https://x.com/PrometheusTij" target="_blank">
+     <a 
+      title="ir a x-twitter"
+     href="https://x.com/PrometheusTij" target="_blank">
         <FaXTwitter className="text-2xl hover:text-blue-500 hover:cursor-pointer" />
       </a>
       {/* <FaLinkedin className="text-2xl hover:text-blue-500 hover:cursor-pointer" /> */}

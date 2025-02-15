@@ -11,6 +11,7 @@ export default function Product({
   WebDesc6,
   ProtDesc1,
   ProtDesc2,
+  PaliativosDesc,
   CloseButton,
   QuoteButton,
 }) {
@@ -20,6 +21,14 @@ export default function Product({
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const projects = [
+    {
+      id: 0,
+      name: "Paliativos",
+      description: PaliativosDesc,
+      images: ["/Imagenes/Paliativos.png", "/Imagenes/Layer 2.png", "/Imagenes/Layer 4.png", "/Imagenes/Layer 5.png", "/Imagenes/Layer 6.png", "/Imagenes/Layer 7.png"],
+      category: "App",
+      projectUrl: "/App", 
+    },
     {
       id: 1,
       name: "PetSafe",
@@ -191,6 +200,7 @@ export default function Product({
                 <img
                   src={project.images[0]}
                   alt={project.name}
+                  title={project.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />

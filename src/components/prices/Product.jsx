@@ -14,12 +14,21 @@ export default function Product({
   ProtDesc2,
   CloseButton,
   QuoteButton,
+  PaliativosDesc,
 }) {
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const projects = [
+    {
+      id: 0,
+      name: "Paliativos",
+      description: PaliativosDesc,
+      images: ["/Imagenes/Paliativos.png", "/Imagenes/Layer 2.png", "/Imagenes/Layer 4.png", "/Imagenes/Layer 5.png", "/Imagenes/Layer 6.png", "/Imagenes/Layer 7.png"],
+      category: "App",
+      projectUrl: "/App", 
+    },
     {
       id: 1,
       name: "PetSafe",
