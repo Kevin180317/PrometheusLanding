@@ -8,6 +8,7 @@ import Quote from "@Components/Quote.astro";
 import About from "@Components/About.astro";
 import Banner from "@Components/Banner.astro";
 import Contact from "@Components/Contact";
+import LanguageModal from "@Components/LanguageModal";
 
 import { getLangFromUrl, useTranslations } from "@src/i18n/utils";
 
@@ -21,6 +22,7 @@ const t = useTranslations(lang);
   keywords="PrometheusTij, desarrollo web, desarrollo de apps, prototipos digitales, innovación tecnológica, soluciones digitales personalizadas, impacto digital, diseño web, desarrollo de prototipos, equipo creativo digital"
 >
   <Container>
+    <LanguageModal client:load />
     <Hero />
     <Service />
     <!-- <Work /> -->

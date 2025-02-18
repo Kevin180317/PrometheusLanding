@@ -5,7 +5,6 @@ import "@fonts/MYRIADPRO-REGULAR.woff";
 import Header from "@Components/Header.astro";
 import Footer from "@Components/Footer.astro";
 import { getLangFromUrl } from "src/i18n/utils";
-import LanguageModal from "@Components/LanguageModal";
 
 interface Props {
   title: string;
@@ -31,13 +30,12 @@ const lang = getLangFromUrl(Astro.url);
     <meta name="keywords" content={keywords} />
     <meta name="robots" content="index, follow" />
     <meta name="publisher" content="PrometheusTij" />
-    <meta property="og:title" content="Astro" />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content="https://prometheustij.com/ogImage.png" />
     <meta property="og:url" content="https://prometheustij.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="https://prometheustij.com/" />
-    <meta name="theme-color" content="#000000" />
     <meta
       name="google-site-verification"
       content="GExUNFmJDSMw7Nb_yoabt-80oVorKEkOcGO2eQ_4aHg"
@@ -46,7 +44,6 @@ const lang = getLangFromUrl(Astro.url);
     <ClientRouter />
   </head>
   <body class="overflow-x-hidden">
-    <LanguageModal client:load />
     <Header />
     <slot />
     <Footer />
