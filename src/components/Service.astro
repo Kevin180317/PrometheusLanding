@@ -36,21 +36,21 @@ const services = [
   <div class="flex flex-col md:flex-row md:justify-center items-center gap-16">
     {
       services.map((service) => (
-        <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
+        <a
+          href={service.href}
+          title={service.title}
+          class="bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105"
+        >
           <img
             src={service.image}
             alt={service.title}
             title={service.title}
             class="w-full h-72 object-cover"
           />
-          <a
-            href={service.href}
-            title={service.title}
-            class="flex justify-center items-center text-2xl font-semibold bg-gray-800 text-white h-20 hover:bg-gray-700 transition-colors duration-300"
-          >
+          <span class="flex justify-center items-center text-2xl font-semibold bg-gray-800 text-white h-20 hover:bg-gray-700 transition-colors duration-300">
             {service.title}
-          </a>
-        </div>
+          </span>
+        </a>
       ))
     }
   </div>
