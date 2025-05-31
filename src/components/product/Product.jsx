@@ -23,7 +23,7 @@ export default function Product({
   const projects = [
     {
       id: 0,
-      name: "Paliativos",
+      name: "Portafolio-Medico",
       description: PaliativosDesc,
       images: [
         "/Imagenes/Paliativos.png",
@@ -124,7 +124,7 @@ export default function Product({
       description: WebDesc5,
       images: ["/Imagenes/akerlun.png"],
       category: "Web",
-      projectUrl: "https://akerlundh.netlify.app/",
+      projectUrl: "https://akerlundhinteriorismo.com/",
     },
     {
       id: 10,
