@@ -1,6 +1,5 @@
 ---
 import Language from "@Components/Language";
-import Logo from "@public/Logo.svg";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -37,7 +36,7 @@ const URL = Astro.url.pathname;
   w-full shadow-md z-10 bg-gray-800 p-4"
 >
   <a href="/" title="Ir al inicio" class="flex items-center">
-    <Logo class="w-32 h-32" />
+    <img src="/logo.png" class="h-12 w-auto" />
   </a>
   {
     URL === "/" || URL === "/en/" ? (
@@ -127,7 +126,7 @@ const URL = Astro.url.pathname;
   <div class="flex flex-col items-center mt-16 space-y-8 flex-grow">
     <div class="flex items-center">
       <img
-        src="/logo.webp"
+        src="/logo.png"
         class="w-48 h-16"
         alt="Logo de Prometheustij"
         title="Logo de Prometheustij"
