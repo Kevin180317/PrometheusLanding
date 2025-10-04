@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function Product({
   AppDesc1,
@@ -6,24 +6,19 @@ export default function Product({
   WebDesc1,
   WebDesc2,
   WebDesc3,
-  WebDesc4,
   WebDesc5,
   WebDesc6,
   ProtDesc1,
   ProtDesc2,
   PaliativosDesc,
-  CloseButton,
-  QuoteButton,
 }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const projects = [
     {
       id: 0,
       name: "Portafolio-Medico",
+      link: "portafolio-medico",
       description: PaliativosDesc,
       images: [
         "/Imagenes/Paliativos.png",
@@ -39,6 +34,7 @@ export default function Product({
     {
       id: 9,
       name: "Akerlundh",
+      link: "akerlundh",
       description: WebDesc5,
       images: ["/Imagenes/aker.png"],
       category: "Web",
@@ -47,18 +43,20 @@ export default function Product({
     {
       id: 1,
       name: "PetSafe",
+      link: "petsafe",
       description: AppDesc1,
       images: [
         "/Imagenes/app1.png",
         "/Imagenes/app1.2.png",
         "/Imagenes/app1.3.png",
-      ], // Varias imágenes
+      ],
       category: "App",
       projectUrl: "/proyecto-1",
     },
     {
       id: 2,
       name: "CetoTj",
+      link: "cetotj",
       description: WebDesc1,
       images: ["/Imagenes/mockup1.png", "/Imagenes/mockup2.png"],
       category: "Web",
@@ -67,6 +65,7 @@ export default function Product({
     {
       id: 3,
       name: "Recipe-Book",
+      link: "recipe-book",
       description: AppDesc2,
       images: [
         "/Imagenes/app2.png",
@@ -79,6 +78,7 @@ export default function Product({
     {
       id: 4,
       name: "Medical-Commerce",
+      link: "medical-commerce",
       description: WebDesc2,
       images: ["/Imagenes/mockup2.png", "/Imagenes/mockup4.png"],
       category: "Web",
@@ -87,6 +87,7 @@ export default function Product({
     {
       id: 5,
       name: "Portfolio Photography-John",
+      link: "portfolio-photography-john",
       description: WebDesc3,
       images: ["/Imagenes/mockup3.png", "/Imagenes/mockup5.png"],
       category: "Web",
@@ -95,6 +96,7 @@ export default function Product({
     {
       id: 6,
       name: "Prototipado",
+      link: "prototipado",
       description: ProtDesc1,
       images: [
         "/Imagenes/Prototipado.jpg",
@@ -108,6 +110,7 @@ export default function Product({
     {
       id: 7,
       name: ProtDesc2,
+      link: "impresiones-3d",
       description: ProtDesc2,
       images: [
         "/Imagenes/3D.jpg",
@@ -118,18 +121,10 @@ export default function Product({
       category: "Prototipo",
       projectUrl: "/proyecto-6",
     },
-    // {
-    //   id: 8,
-    //   name: WebDesc5,
-    //   description: WebDesc4,
-    //   images: ["/Imagenes/demo-ecommerce.png"],
-    //   category: "Web",
-    //   projectUrl: "https://demo-ecommercebc.netlify.app/",
-    // },
-
     {
       id: 10,
       name: "profurniture",
+      link: "profurniture",
       description: WebDesc6,
       images: ["/Imagenes/forniture.png"],
       category: "Web",
@@ -145,30 +140,14 @@ export default function Product({
       : projects.filter((project) => project.category === selectedCategory);
 
   const handleImageClick = (project) => {
-    if (project.category === "Web") {
-      window.open(project.projectUrl, "_blank");
-    } else {
-      setSelectedProject(project);
-      setCurrentImageIndex(0); // Reiniciar el índice de la imagen
-      setIsModalOpen(true);
-    }
-  };
+    const isEnglish = window.location.pathname.startsWith("/en/");
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedProject(null);
-  };
+    // Construye la URL dependiendo del idioma
+    const projectUrl = isEnglish
+      ? `/en/projects/${project.link}`
+      : `/projects/${project.link}`;
 
-  const nextImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === selectedProject.images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? selectedProject.images.length - 1 : prevIndex - 1
-    );
+    window.location.href = projectUrl;
   };
 
   return (
@@ -225,93 +204,6 @@ export default function Product({
           ))}
         </div>
       </div>
-
-      {isModalOpen && selectedProject && (
-        <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-lg max-w-lg w-full overflow-hidden relative">
-            {/* Contenedor del carrusel */}
-            <div className="relative w-full h-64">
-              <img
-                src={selectedProject.images[currentImageIndex]}
-                alt={selectedProject.name}
-                className="w-full h-full object-cover"
-              />
-
-              {/* Botón Anterior */}
-              <button
-                onClick={prevImage}
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100 transition"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M5 12l14 0" />
-                  <path d="M5 12l6 6" />
-                  <path d="M5 12l6 -6" />
-                </svg>
-              </button>
-
-              {/* Botón Siguiente */}
-              <button
-                onClick={nextImage}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100 transition"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-right"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M5 12l14 0" />
-                  <path d="M13 18l6 -6" />
-                  <path d="M13 6l6 6" />
-                </svg>
-              </button>
-            </div>
-
-            {/* Contenido del modal */}
-            <div className="p-6">
-              <h3 className="text-2xl font-bold mb-2">
-                {selectedProject.name}
-              </h3>
-              <p className="text-gray-600 mb-4">
-                {selectedProject.description}
-              </p>
-              <div className="flex justify-end gap-4">
-                <button
-                  onClick={closeModal}
-                  className="px-6 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 transition"
-                >
-                  {CloseButton}
-                </button>
-                <a
-                  href="/contact"
-                  className="px-6 py-2 bg-[#39BAC8]  text-white rounded-lg hover:bg-[#2A9D8F] transition"
-                >
-                  {QuoteButton}
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

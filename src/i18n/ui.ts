@@ -89,7 +89,7 @@ export const ui = {
       "If you have any questions about our privacy policy or terms of service, you can contact us at [contact email] or our physical address.",
     "term.conclusion.title": "Conclusion",
     "term.conclusion.info":
-      "This document sets out the terms and conditions under which you may access and use the PrometheusR&DTij website and services. By using our website, you accept these terms and conditions in full. It is important to adapt these texts to the specific practices of PrometheusR&DTij and review them with a legal professional to ensure that they comply with applicable laws and appropriately reflect the company's privacy policies and terms of service.",
+      "This document sets out the terms and conditions under which you may access and use the PrometheusR&DTij website and services. By using our website, you accept these terms and conditions in full.",
     "policy.title": "Privacy Policy",
     "policy.collected.title": "Information Collected",
     "policy.collected.info":
@@ -121,7 +121,7 @@ export const ui = {
       "Mobile application for your favorite pet's information.",
     "product.app.desc2":
       "App designed to facilitate the search of recipes for the home.",
-      "product.app.desc3":
+    "product.app.desc3":
       "App focused on the search for doctors and facilitating the process of scheduling appointments in the city of Tijuana.",
     "product.web.desc1":
       "Interactive website with a modern and accessible interface for stores focused on the sale of coffee.",
@@ -224,7 +224,7 @@ export const ui = {
       "Si tiene alguna pregunta sobre nuestra política de privacidad o términos de servicio, puede contactarnos a través de [correo electrónico de contacto] o nuestra dirección física.",
     "term.conclusion.title": "Conclusión",
     "term.conclusion.info":
-      "Este documento establece los términos y condiciones bajo los cuales usted puede acceder y utilizar el sitio web y servicios de PrometheusR&DTij. Al utilizar nuestro sitio web, usted acepta estos términos y condiciones en su totalidad. Es importante adaptar estos textos a las prácticas específicas de PrometheusR&DTij y revisarlos con un profesional legal para asegurarse de que cumplan con las leyes aplicables y reflejen adecuadamente las políticas de privacidad y términos de servicio de la empresa.",
+      "Este documento establece los términos y condiciones bajo los cuales usted puede acceder y utilizar el sitio web y servicios de PrometheusR&DTij. Al utilizar nuestro sitio web, usted acepta estos términos y condiciones en su totalidad.",
     "policy.title": "Política de Privacidad",
     "policy.collected.title": "Información Recopilada",
     "policy.collected.info":
@@ -256,8 +256,8 @@ export const ui = {
       "Aplicación móvil para la informacion de tu mascota favorita",
     "product.app.desc2":
       "App diseñada para facilitar la busqueda de recetas para el hogar.",
-      "product.app.desc3":
-"App enfocada a la busqueda de doctores y facilitar el proceso de agendar citas en la ciudad de Tijuana.",
+    "product.app.desc3":
+      "App enfocada a la busqueda de doctores y facilitar el proceso de agendar citas en la ciudad de Tijuana.",
     "product.web.desc1":
       "Sitio web interactivo con una interfaz moderna y accesible para tiendas enfocadas a la venta del cafe",
     "product.web.desc2":
