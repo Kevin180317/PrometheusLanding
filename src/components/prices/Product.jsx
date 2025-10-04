@@ -37,6 +37,14 @@ export default function Product({
       projectUrl: "/App",
     },
     {
+      id: 9,
+      name: "Akerlundh",
+      description: WebDesc5,
+      images: ["/Imagenes/aker.png"],
+      category: "Web",
+      projectUrl: "https://akerlundhinteriorismo.com/",
+    },
+    {
       id: 1,
       name: "PetSafe",
       description: AppDesc1,
@@ -118,14 +126,7 @@ export default function Product({
     //   category: "Web",
     //   projectUrl: "https://demo-ecommercebc.netlify.app/",
     // },
-    {
-      id: 9,
-      name: "Akerlundh",
-      description: WebDesc5,
-      images: ["/Imagenes/akerlun.png"],
-      category: "Web",
-      projectUrl: "https://akerlundhinteriorismo.com/",
-    },
+
     {
       id: 10,
       name: "profurniture",
