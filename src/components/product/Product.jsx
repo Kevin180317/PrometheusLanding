@@ -141,39 +141,38 @@ export default function Product({
 
   const handleImageClick = (project) => {
     const isEnglish = window.location.pathname.startsWith("/en/");
-
-    // Construye la URL dependiendo del idioma
     const projectUrl = isEnglish
       ? `/en/projects/${project.link}`
       : `/projects/${project.link}`;
-
     window.location.href = projectUrl;
   };
 
   return (
     <div className="p-8 min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto">
+        {/* Botones de categorías */}
         <div className="mb-12">
-          <label
-            htmlFor="category"
-            className="block text-xl font-semibold text-gray-900 mb-3"
-          >
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">
             Explorar proyectos de:
-          </label>
-          <select
-            id="category"
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-lg"
-          >
+          </h2>
+          <div className="flex gap-4 flex-wrap">
             {categories.map((category) => (
-              <option key={category} value={category}>
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-6 py-3 rounded-lg font-semibold shadow-md transition-all duration-300 ${
+                  selectedCategory === category
+                    ? "bg-gray-800 text-white shadow-lg scale-105"
+                    : "bg-blue-600 text-white hover:bg-blue-500"
+                }`}
+              >
                 {category}
-              </option>
+              </button>
             ))}
-          </select>
+          </div>
         </div>
 
+        {/* Grid de proyectos */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredProjects.map((project) => (
             <div
