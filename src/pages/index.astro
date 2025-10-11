@@ -30,7 +30,7 @@ const t = useTranslations(lang);
     <About />
     <Banner />
     <Contact
-      client:load
+      client:only="react"
       title={t("contact.title")}
       placeholder1={t("contact.placeholder1")}
       placeholder2={t("contact.placeholder2")}

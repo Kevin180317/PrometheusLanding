@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState, useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Contact = ({
   title,
@@ -12,8 +13,10 @@ const Contact = ({
   buttonError1,
   buttonError2,
   buttonSuccess,
+  recaptchaError = "Por favor verifica que no eres un robot",
 }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const recaptchaRef = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,18 +29,26 @@ const Contact = ({
       return;
     }
 
-    setIsSubmitting(true);
+    const recaptchaValue = recaptchaRef.current?.getValue();
+    if (!recaptchaValue) {
+      toast.error(recaptchaError);
+      return;
+    }
 
+    setIsSubmitting(true);
     try {
       await axios.post(import.meta.env.PUBLIC_FORMULARIO_URL, {
         name,
         email,
         message,
+        recaptchaToken: recaptchaValue,
       });
       toast.success(buttonSuccess);
-      e.target.reset(); // Limpiar el formulario después del envío
+      e.target.reset();
+      recaptchaRef.current.reset();
     } catch (error) {
       toast.error(buttonError2);
+      recaptchaRef.current.reset();
     } finally {
       setIsSubmitting(false);
     }
@@ -54,13 +65,13 @@ const Contact = ({
       <h1 className="text-5xl md:text-6xl font-bold text-white text-center mb-8">
         {title}
       </h1>
+
       <form onSubmit={handleSubmit} className="w-full max-w-lg">
         <div className="flex flex-col gap-6">
           <input
             className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#39BAC8] focus:border-transparent transition-all"
             type="text"
             name="name"
-            id="name"
             placeholder={placeholder1}
             required
           />
@@ -68,18 +79,28 @@ const Contact = ({
             className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#39BAC8] focus:border-transparent transition-all"
             type="email"
             name="email"
-            id="email"
             placeholder={placeholder2}
             required
           />
           <textarea
             className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#39BAC8] focus:border-transparent transition-all"
             name="message"
-            id="message"
             placeholder={placeholder3}
             rows="5"
             required
           ></textarea>
+
+          {/* Renderiza ReCAPTCHA solo en cliente */}
+          {typeof window !== "undefined" && (
+            <div className="flex justify-center">
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY}
+                theme="light"
+              />
+            </div>
+          )}
+
           <button
             type="submit"
             className="px-8 py-3 bg-black text-white text-xl font-semibold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
@@ -96,6 +117,7 @@ const Contact = ({
           </button>
         </div>
       </form>
+
       <Toaster position="top-right" />
     </main>
   );
