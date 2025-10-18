@@ -129,6 +129,15 @@ export default function Product({
       category: "Web",
       projectUrl: "https://profurniture.netlify.app/",
     },
+    {
+      id: 11,
+      name: "AirBNB App Tv",
+      link: "airbnb-app-tv",
+      description: "AirBNB App para Smart TV",
+      images: ["/Imagenes/airbnb.webp"],
+      category: "App",
+      projectUrl: "/proyecto-7",
+    },
   ];
 
   const filteredProjects = projects.filter(
