@@ -1,6 +1,7 @@
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Form({
   title,
@@ -17,7 +18,7 @@ export default function Form({
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const recaptchaRef = useRef(null);
   const formData = { email, name, message };
 
   const handleSubmit = async (e) => {
@@ -25,6 +26,12 @@ export default function Form({
 
     if (!email || !name || !message) {
       toast.error(buttonError1);
+      return;
+    }
+
+    const recaptchaValue = recaptchaRef.current?.getValue();
+    if (!recaptchaValue) {
+      toast.error(recaptchaError);
       return;
     }
 
@@ -36,8 +43,10 @@ export default function Form({
       setEmail("");
       setName("");
       setMessage("");
+      recaptchaRef.current.reset();
     } catch (error) {
       toast.error(buttonError2);
+      recaptchaRef.current.reset();
     } finally {
       setIsSubmitting(false);
     }
@@ -77,6 +86,17 @@ export default function Form({
             className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#39BAC8] focus:border-transparent transition-all"
             rows="5"
           ></textarea>
+
+          {typeof window !== "undefined" && (
+            <div className="flex justify-center">
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY}
+                theme="light"
+              />
+            </div>
+          )}
+
           <button
             type="submit"
             className="px-8 py-3 bg-[#39BAC8] hover:bg-[#2A9D8F] text-white text-xl font-semibold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
