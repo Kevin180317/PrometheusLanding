@@ -13,6 +13,7 @@ export default function Form({
   buttonError1,
   buttonError2,
   buttonSuccess,
+  recaptchaError = "Por favor verifica que no eres un robot",
 }) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -38,7 +39,10 @@ export default function Form({
     setIsSubmitting(true);
 
     try {
-      await axios.post(import.meta.env.PUBLIC_FORMULARIO_URL, formData);
+      await axios.post(import.meta.env.PUBLIC_FORMULARIO_URL, {
+        ...formData,
+        recaptchaToken: recaptchaValue,
+      });
       toast.success(buttonSuccess);
       setEmail("");
       setName("");
