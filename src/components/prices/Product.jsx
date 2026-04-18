@@ -37,7 +37,7 @@ export default function Product({
       description: WebDesc5,
       images: ["/Imagenes/aker.png"],
       category: "Web",
-      projectUrl: "https://akerlundhinteriorismo.com/",
+      projectUrl: "https://akerlundhinteriorismo.netlify.app/",
     },
     {
       id: 1,
@@ -141,7 +141,7 @@ export default function Product({
   ];
 
   const filteredProjects = projects.filter(
-    (project) => project.category === categoria
+    (project) => project.category === categoria,
   );
 
   const handleImageClick = (project) => {

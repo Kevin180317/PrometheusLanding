@@ -38,7 +38,7 @@ export default function Product({
       description: WebDesc5,
       images: ["/Imagenes/aker.png"],
       category: "Web",
-      projectUrl: "https://akerlundhinteriorismo.com/",
+      projectUrl: "https://akerlundhinteriorismo.netlify.app/",
     },
     {
       id: 1,
