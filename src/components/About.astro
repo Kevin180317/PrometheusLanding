@@ -3,15 +3,31 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const badges = [
+  t("about.badge1"),
+  t("about.badge2"),
+  t("about.badge3"),
+  t("about.badge4"),
+  t("about.badge5"),
+];
 ---
 
-<main
-  class="bg-gray-700 py-12 md:py-32 flex justify-center items-center flex-col text-white px-4"
->
-  <h1 class="text-5xl mb-8">
-    {t("about.title")}
-  </h1>
-  <h1 class="text-5xl mb-8">
-    {t("about.subtitle")}
-  </h1>
-</main>
+<div id="about" class="bg-dark-3 py-14 px-12 border-y border-cyan/10 max-md:px-5 max-md:py-10">
+  <div class="grid grid-cols-[1fr_1fr] gap-12 items-center max-md:grid-cols-1">
+    <div>
+      <h2 class="font-bebas text-[clamp(40px,5vw,58px)] tracking-[3px] leading-[1.0] mb-5">
+        {t("about.headline1")}<br><span class="text-cyan">{t("about.accent")}</span><br>{t("about.headline2")}
+      </h2>
+      <p class="text-[14px] font-light text-gray-custom leading-[1.9]">{t("about.body")}</p>
+    </div>
+    <div class="flex flex-col gap-[10px]">
+      {badges.map((b) => (
+        <div class="flex items-center gap-[14px] px-[18px] py-[14px] bg-[rgba(57,186,200,0.04)] border border-[rgba(57,186,200,0.12)] hover:border-[rgba(57,186,200,0.35)] transition-colors">
+          <div class="w-[6px] h-[6px] bg-cyan flex-shrink-0"></div>
+          <span class="text-[13px] text-white font-normal">{b}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

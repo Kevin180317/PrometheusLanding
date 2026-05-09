@@ -1,0 +1,33 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const testimonials = [
+  { quote: t("testi.quote1"), author: t("testi.author1"), role: t("testi.role1") },
+  { quote: t("testi.quote2"), author: t("testi.author2"), role: t("testi.role2") },
+];
+---
+
+<section class="px-12 py-20 bg-dark max-md:px-5 max-md:py-12">
+  <div class="flex items-center gap-3 mb-3">
+    <span class="inline-block w-6 h-[1px] bg-cyan"></span>
+    <span class="text-[10px] tracking-[5px] uppercase text-cyan">{t("testi.eyebrow")}</span>
+  </div>
+  <h2 class="font-bebas text-[clamp(40px,5vw,52px)] tracking-[3px] mb-3 leading-none">{t("testi.title")}</h2>
+  <p class="text-[15px] font-light text-gray-custom max-w-[560px] leading-[1.8] mb-10">{t("testi.sub")}</p>
+
+  <div class="grid grid-cols-2 max-md:grid-cols-1 gap-4">
+    {testimonials.map((testi) => (
+      <div class="bg-dark-3 border-l-[3px] border-cyan p-6 pl-[22px] hover:bg-[#1a2535] transition-colors">
+        <div class="text-cyan text-[13px] tracking-[3px] mb-[14px]">★★★★★</div>
+        <div class="text-[13px] font-light italic text-[#ccc] leading-[1.8] mb-4">
+          <span class="text-cyan text-lg">"</span>{testi.quote}<span class="text-cyan text-lg">"</span>
+        </div>
+        <div class="text-[13px] font-semibold text-white">{testi.author}</div>
+        <div class="text-[10px] text-cyan tracking-[1.5px] uppercase mt-[3px]">{testi.role}</div>
+      </div>
+    ))}
+  </div>
+</section>

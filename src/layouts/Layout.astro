@@ -1,9 +1,9 @@
 ---
 import { ClientRouter } from "astro:transitions";
-import "@fontsource/bebas-neue";
-import "@fonts/MYRIADPRO-REGULAR.woff";
+import Banner from "@Components/Banner.astro";
 import Header from "@Components/Header.astro";
 import Footer from "@Components/Footer.astro";
+import FloatingWhatsApp from "@Components/FloatingWhatsApp.astro";
 import { getLangFromUrl } from "src/i18n/utils";
 
 interface Props {
@@ -40,13 +40,21 @@ const lang = getLangFromUrl(Astro.url);
       name="google-site-verification"
       content="GExUNFmJDSMw7Nb_yoabt-80oVorKEkOcGO2eQ_4aHg"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;1,300&family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
     <title>{title}</title>
     <ClientRouter />
   </head>
-  <body class="overflow-x-hidden">
+  <body class="overflow-x-hidden bg-dark text-white font-barlow">
+    <Banner />
     <Header />
     <slot />
     <Footer />
+    <FloatingWhatsApp />
   </body>
 </html>
 
@@ -55,15 +63,11 @@ const lang = getLangFromUrl(Astro.url);
     scroll-behavior: smooth;
     overflow-x: hidden;
   }
-  p,
-  li,
-  ul,
-  input,
-  textarea {
-    font-family: "Myriad Pro", sans-serif;
-  }
-
-  body {
-    font-family: "Bebas Neue", sans-serif;
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 </style>

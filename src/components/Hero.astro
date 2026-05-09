@@ -3,26 +3,59 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const pills = [
+  t("hero.pill1"),
+  t("hero.pill2"),
+  t("hero.pill3"),
+  t("hero.pill4"),
+];
+
+const stats = [
+  { num: "2020", label: t("hero.stat1") },
+  { num: "2", label: t("hero.stat2") },
+  { num: "10+", label: t("hero.stat3") },
+  { num: "100%", label: t("hero.stat4") },
+];
 ---
 
-<main
-  class="relative hero md:h-screen text-white flex justify-center px-16 items-start flex-col bg-cover bg-center bg-no-repeat py-8 md:py-0"
-  style="background-image: url('/Imagenes/6-2.png');"
->
-  <div class="absolute inset-0 bg-black opacity-50"></div>
-  <div class="relative z-10">
-    <h1 class="text-5xl md:text-7xl mt-16 md:mt-0">
-      {t("hero.title")}
-    </h1>
-    <p class="text-2xl mb-8 md:w-[700px]">
-      {t("hero.subtitle")}
-    </p>
-    <a
-      href="#contact"
-      title="Ir a contact"
-      class="bg-[#39BAC8] px-8 text-3xl py-2 uppercase hover:opacity-75 mb-8"
-    >
-      {t("hero.button")}
-    </a>
+<section id="home" class="relative min-h-[92vh] px-12 py-20 flex flex-col justify-center overflow-hidden bg-dark max-md:px-5 max-md:py-12">
+  <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(57,186,200,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(57,186,200,0.04) 1px, transparent 1px); background-size: 48px 48px;"></div>
+  <div class="absolute top-[-120px] right-[-120px] w-[600px] h-[600px] pointer-events-none" style="background: radial-gradient(circle, rgba(57,186,200,0.1) 0%, transparent 65%);"></div>
+  <div class="absolute bottom-[-80px] left-[-80px] w-[400px] h-[400px] pointer-events-none" style="background: radial-gradient(circle, rgba(104,198,225,0.06) 0%, transparent 65%);"></div>
+
+  <div class="flex items-center gap-3 mb-5 relative">
+    <span class="inline-block w-9 h-[2px] bg-cyan"></span>
+    <span class="text-[11px] tracking-[5px] uppercase text-cyan">{t("hero.eyebrow")}</span>
   </div>
-</main>
+
+  <h1 class="font-bebas text-[clamp(72px,10vw,110px)] leading-[0.9] tracking-[3px] relative mb-2 max-md:text-[64px] max-sm:text-[52px]">
+    {t("hero.line1")}<br>
+    <span class="text-cyan">{t("hero.accent")}</span><br>
+    {t("hero.line2")}
+  </h1>
+
+  <p class="text-lg italic font-light text-cyan-light mt-5 mb-3 relative max-md:text-base">{t("hero.tagline")}</p>
+
+  <div class="flex flex-wrap gap-[10px] mt-4 mb-9 relative">
+    {pills.map((pill) => (
+      <span class="text-[10px] tracking-[2px] uppercase px-[14px] py-[6px] border border-cyan/35 text-gray-custom bg-cyan/5 hover:text-cyan hover:border-cyan transition-colors">
+        {pill}
+      </span>
+    ))}
+  </div>
+
+  <div class="flex gap-4 flex-wrap relative">
+    <a href="#services" class="bg-cyan text-dark px-8 py-[14px] text-[12px] font-semibold tracking-[2px] uppercase no-underline inline-block hover:opacity-85 transition-opacity">{t("hero.cta1")}</a>
+    <a href="#contact" class="bg-transparent text-white px-8 py-[14px] text-[12px] font-normal tracking-[2px] uppercase no-underline inline-block border border-white/20 hover:border-cyan hover:text-cyan transition-all">{t("hero.cta2")}</a>
+  </div>
+
+  <div class="flex gap-12 mt-14 pt-9 border-t border-cyan/12 relative max-md:gap-5 max-sm:flex-wrap max-sm:gap-4">
+    {stats.map((stat) => (
+      <div>
+        <div class="font-bebas text-4xl text-cyan tracking-[2px] leading-none">{stat.num}</div>
+        <div class="text-[10px] tracking-[2px] uppercase text-gray-custom mt-1">{stat.label}</div>
+      </div>
+    ))}
+  </div>
+</section>

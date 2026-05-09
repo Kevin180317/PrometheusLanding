@@ -1,5 +1,4 @@
 ---
-import Icons from "@Components/Icons";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -7,75 +6,40 @@ const t = useTranslations(lang);
 const year = new Date().getFullYear();
 ---
 
-<footer id="footer" class="bg-gray-800 p-4 text-white py-8">
-  <div
-    class="flex flex-col md:flex-row md:justify-between items-start md:items-start gap-4"
-  >
+<footer class="bg-[#07090C] px-12 py-14 pt-8 border-t border-cyan/15 max-md:px-5 max-md:py-10">
+  <div class="grid grid-cols-[2.5fr_1fr_1fr_1fr] gap-10 mb-10 max-md:grid-cols-2 max-sm:grid-cols-1">
     <div>
-      <img
-        src="/logofooter.png"
-        class="h-24 w-42"
-        alt="Logo de Prometheustij"
-        title="Logo de Prometheustij"
-      />
-      <p class="md:w-[80%] px-4">
-        &copy; {year}
-        {t("footer.copy")}
-      </p>
-      <Icons client:visible />
+      <div class="font-bebas text-[22px] tracking-[4px] mb-3">PROMET<span class="text-cyan">H</span>EUS</div>
+      <div class="text-[12px] italic text-gray-custom font-light leading-[1.7] mb-4">{t("footer.tagline")}</div>
+      <div class="text-[10px] text-gray-custom2 tracking-[2px]">{t("footer.location")}</div>
     </div>
-    <div class="px-4 md:px-0">
-      <h2 class="text-4xl">{t("footer.about")}</h2>
-      <ul class="list-none">
-        <!-- <li><a title={t("link.products")} href="/history" class="hover:underline">History</a></li>
-        <li><a title={t("link.products")} href="/team" class="hover:underline">Our Team</a></li> -->
-        <li>
-          <a
-            title={t("link.term")}
-            href={t("link.term")}
-            class="hover:underline">{t("footer.terms")}</a
-          >
-        </li>
-        <li>
-          <a
-            title={t("link.policy")}
-            href={t("link.policy")}
-            class="hover:underline"
-          >
-            {t("footer.policy")}
-          </a>
-        </li>
-      </ul>
+    <div>
+      <div class="text-[9px] tracking-[3px] uppercase text-cyan mb-4">{t("footer.col1")}</div>
+      <a href="#services" class="block text-[12px] text-gray-custom no-underline mb-2 hover:text-white transition-colors">{t("footer.link1")}</a>
+      <a href="#services" class="block text-[12px] text-gray-custom no-underline mb-2 hover:text-white transition-colors">{t("footer.link2")}</a>
+      <a href="#services" class="block text-[12px] text-gray-custom no-underline mb-2 hover:text-white transition-colors">{t("footer.link3")}</a>
+      <a href="#services" class="block text-[12px] text-gray-custom no-underline mb-2 hover:text-white transition-colors">{t("footer.link4")}</a>
     </div>
-    <div class="px-4 md:px-0">
-      <h2 class="text-4xl">
-        {t("footer.services")}
-      </h2>
-      <ul class="list-none">
-        <li>
-          <a
-            title={t("link.products")}
-            href={t("link.products")}
-            class="hover:underline">{t("footer.products")}</a
-          >
-        </li>
-      </ul>
+    <div>
+      <div class="text-[9px] tracking-[3px] uppercase text-cyan mb-4">{t("footer.col2")}</div>
+      <a href="#about" class="block text-[12px] text-gray-custom no-underline mb-2 hover:text-white transition-colors">{t("footer.link5")}</a>
+      <a href="#portfolio" class="block text-[12px] text-gray-custom no-underline mb-2 hover:text-white transition-colors">{t("footer.link6")}</a>
+      <a href="#" class="block text-[12px] text-gray-custom no-underline mb-2 hover:text-white transition-colors">{t("footer.link7")}</a>
+      <a href="#contact" class="block text-[12px] text-gray-custom no-underline mb-2 hover:text-white transition-colors">{t("footer.link8")}</a>
     </div>
-    <div class="px-4 md:px-0">
-      <h2 class="text-4xl">
-        {t("footer.other")}
-      </h2>
-      <ul class="list-none">
-        <li>
-          <a
-            title={t("link.contact")}
-            href={t("link.contact")}
-            class="hover:underline"
-          >
-            {t("footer.contact")}
-          </a>
-        </li>
-      </ul>
+    <div>
+      <div class="text-[9px] tracking-[3px] uppercase text-cyan mb-4">{t("footer.col3")}</div>
+      <a href="#" class="block text-[12px] text-gray-custom no-underline mb-2 hover:text-white transition-colors">{t("footer.link9")}</a>
+      <a href="#" class="block text-[12px] text-gray-custom no-underline mb-2 hover:text-white transition-colors">{t("footer.link10")}</a>
+      <a href="#" class="block text-[12px] text-gray-custom no-underline mb-2 hover:text-white transition-colors">{t("footer.link11")}</a>
+    </div>
+  </div>
+  <div class="border-t border-[rgba(57,186,200,0.08)] pt-5 flex justify-between items-center max-sm:flex-col max-sm:gap-3">
+    <div class="text-[10px] text-gray-custom2 tracking-[1.5px]">© {year} {t("footer.copy")}</div>
+    <div class="flex gap-[10px]">
+      <a href="#" target="_blank" class="w-8 h-8 border border-cyan/20 flex items-center justify-center text-[10px] font-semibold text-gray-custom no-underline hover:border-cyan hover:text-cyan transition-all">in</a>
+      <a href="#" target="_blank" class="w-8 h-8 border border-cyan/20 flex items-center justify-center text-[10px] font-semibold text-gray-custom no-underline hover:border-cyan hover:text-cyan transition-all">ig</a>
+      <a href="#" target="_blank" class="w-8 h-8 border border-cyan/20 flex items-center justify-center text-[10px] font-semibold text-gray-custom no-underline hover:border-cyan hover:text-cyan transition-all">fb</a>
     </div>
   </div>
 </footer>

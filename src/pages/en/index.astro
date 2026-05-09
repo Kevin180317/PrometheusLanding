@@ -2,44 +2,51 @@
 import Layout from "@Layouts/Layout.astro";
 import Hero from "@Components/Hero.astro";
 import Service from "@Components/Service.astro";
-// import Work from "@Components/Work.astro";
-import Container from "@Components/Container.astro";
-import Quote from "@Components/Quote.astro";
 import About from "@Components/About.astro";
-import Banner from "@Components/Banner.astro";
+import Differentiators from "@Components/Differentiators.astro";
+import Portfolio from "@Components/Portfolio.astro";
+import Testimonials from "@Components/Testimonials.astro";
 import Contact from "@Components/Contact";
+import LanguageModal from "@Components/LanguageModal";
 
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
-import LanguageModal from "@Components/LanguageModal";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
 <Layout
-  title="PrometheusTij || R&D - Innovating Digital Solutions for the Future"
-  description="PrometheusTij is a team specialized in creating innovative websites, apps, and prototypes with a unique focus on high quality and digital impact. We develop custom solutions to transform your vision into reality."
-  keywords="PrometheusTij, web development, app development, digital prototypes, technological innovation, custom digital solutions, digital impact, web design, prototype development, creative digital team"
+  title="Prometheus R&D | Software, Apps & AI Automation — Tijuana"
+  description="Prometheus R&D — Software, AI Automation & Digital Electronics. Binational startup Tijuana–San Diego."
+  keywords="PrometheusTij, web development, app development, AI, automation, Tijuana, San Diego, binational"
 >
-  <Container>
-    <LanguageModal client:load />
-    <Hero />
-    <Service />
-    <!-- <Work /> -->
-    <Quote />
-    <About />
-    <Banner />
-    <Contact
-      client:load
-      title={t("contact.title")}
-      placeholder1={t("contact.placeholder1")}
-      placeholder2={t("contact.placeholder2")}
-      placeholder3={t("contact.placeholder3")}
-      buttonText={t("contact.button")}
-      buttonSending={t("contact.button.sending")}
-      buttonError1={t("contact.button.error1")}
-      buttonError2={t("contact.button.error2")}
-      buttonSuccess={t("contact.button.success")}
-    />
-  </Container>
+  <LanguageModal client:load />
+  <Hero />
+  <Service />
+  <About />
+  <Differentiators />
+  <Portfolio />
+  <Testimonials />
+  <Contact
+    client:load
+    eyebrow={t("contact.eyebrow")}
+    title={t("contact.title")}
+    labelPhone={t("contact.label.phone")}
+    labelEmail={t("contact.label.email")}
+    labelLocation={t("contact.label.location")}
+    labelWebsite={t("contact.label.website")}
+    whatsapp={t("contact.whatsapp")}
+    placeholderName={t("contact.placeholder.name")}
+    placeholderEmail={t("contact.placeholder.email")}
+    placeholderCompany={t("contact.placeholder.company")}
+    placeholderSubject={t("contact.placeholder.subject")}
+    placeholderMessage={t("contact.placeholder.message")}
+    buttonTextSubmit={t("contact.button.text")}
+    buttonText={t("contact.button")}
+    buttonSending={t("contact.button.sending")}
+    buttonError1={t("contact.button.error1")}
+    buttonError2={t("contact.button.error2")}
+    buttonSuccess={t("contact.button.success")}
+    recaptchaError={t("contact.recaptcha.error")}
+  />
 </Layout>

@@ -1,0 +1,42 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const projects = [
+  { name: "CetoTj", desc: t("portfolio.desc1"), type: "web" },
+  { name: "Medical Commerce", desc: t("portfolio.desc2"), type: "web" },
+  { name: "Akerlundh", desc: t("portfolio.desc3"), type: "web" },
+  { name: "PetSafe", desc: t("portfolio.desc4"), type: "app" },
+  { name: "Recipe Book", desc: t("portfolio.desc5"), type: "app" },
+  { name: "3D Prototype", desc: t("portfolio.desc6"), type: "proto" },
+];
+---
+
+<section id="portfolio" class="px-12 py-20 bg-dark-2 max-md:px-5 max-md:py-12">
+  <div class="flex items-center gap-3 mb-3">
+    <span class="inline-block w-6 h-[1px] bg-cyan"></span>
+    <span class="text-[10px] tracking-[5px] uppercase text-cyan">{t("portfolio.eyebrow")}</span>
+  </div>
+  <h2 class="font-bebas text-[clamp(40px,5vw,52px)] tracking-[3px] mb-3 leading-none">{t("portfolio.title")}</h2>
+  <p class="text-[15px] font-light text-gray-custom max-w-[560px] leading-[1.8] mb-10">{t("portfolio.sub")}</p>
+
+  <div class="grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-3 mb-6">
+    {projects.map((p) => (
+      <div class="bg-dark-3 border border-cyan/8 p-5 hover:border-cyan/40 hover:-translate-y-[2px] transition-all">
+        <span class={`inline-block text-[9px] tracking-[2px] uppercase px-[9px] py-[3px] mb-3 ${
+          p.type === "web" ? "bg-cyan/15 text-cyan" :
+          p.type === "app" ? "bg-[rgba(255,107,53,0.15)] text-[#FF6B35]" :
+          "bg-[rgba(104,198,225,0.15)] text-cyan-light"
+        }`}>{p.type === "web" ? "Web" : p.type === "app" ? "App" : "Proto"}</span>
+        <div class="font-bebas text-[17px] tracking-[1.5px] mb-2">{p.name}</div>
+        <div class="text-[12px] font-light text-gray-custom leading-[1.6]">{p.desc}</div>
+      </div>
+    ))}
+  </div>
+
+  <div class="text-center mt-2">
+    <a href="#" class="inline-block bg-transparent text-white text-[11px] font-normal tracking-[2px] uppercase no-underline border border-white/20 hover:border-cyan hover:text-cyan transition-all px-7 py-3">{t("portfolio.cta")}</a>
+  </div>
+</section>

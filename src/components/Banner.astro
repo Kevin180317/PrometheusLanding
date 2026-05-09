@@ -1,18 +1,11 @@
-<main class="flex justify-center items-center">
-  <div class="md:block hidden">
-    <img
-      src="/Imagenes/7.webp"
-      class=""
-      alt="Prometheus se encarga en la implementacion de tecnologias en Tijuana"
-      title="Prometheus se encarga en la implementacion de tecnologias en Tijuana"
-    />
-  </div>
-  <div class="md:hidden block">
-    <img
-      src="/Imagenes/7.webp"
-      class="w-screen"
-      alt="Prometheus se encarga en la implementacion de tecnologias en Tijuana"
-      title="Prometheus se encarga en la implementacion de tecnologias en Tijuana"
-    />
-  </div>
-</main>
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="bg-cyan flex items-center justify-between px-8 py-[10px] max-md:px-5">
+  <span class="text-[12px] font-semibold text-dark tracking-[1px]">{t("banner.text")}</span>
+  <a href="#contact" class="text-[11px] font-semibold text-dark tracking-[2px] uppercase underline cursor-pointer">{t("banner.cta")}</a>
+</div>

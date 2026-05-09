@@ -1,154 +1,46 @@
 ---
-import Language from "@Components/Language";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const links = [
-  { href: t("link.home"), text: t("nav.home") },
-  { href: t("link.products"), text: t("nav.products") },
-  // { href: t("link.about"), text: t("nav.about") },
-  { href: t("link.contact"), text: t("nav.contact") },
-];
-
-const prices = [
-  {
-    href: t("link.services.prot"),
-    text: t("nav.prot"),
-  },
-  {
-    href: t("link.services.app"),
-    text: t("nav.app"),
-  },
-  {
-    href: t("link.services.web"),
-    text: t("nav.web"),
-  },
-];
-
-const year = new Date().getFullYear();
-
-const URL = Astro.url.pathname;
+const altLang = lang === "en" ? "es" : "en";
+const altPath = altLang === "en" ? "/en/" : "/";
 ---
 
 <nav
-  class="flex justify-between items-center px-8 text-white sticky top-0
-  w-full shadow-md z-10 bg-gray-800 p-4"
+  class="flex items-center justify-between px-12 py-4 sticky top-0 z-[100] bg-dark/97 border-b border-cyan/20 backdrop-blur-md max-md:px-5"
 >
-  <a href="/" title="Ir al inicio" class="flex items-center">
-    <img src="/logo.png" class="h-12 w-auto" />
+  <a href="/" class="font-bebas text-2xl tracking-[4px] text-white no-underline">
+    PROMET<span class="text-cyan">H</span>EUS
   </a>
-  {
-    URL === "/" || URL === "/en/" ? (
-      <div class="hidden md:flex">
-        {links.map((link) => (
-          <a
-            href={link.href}
-            title={link.href}
-            class="text-3xl px-4 hover:opacity-75"
-          >
-            {link.text}
-          </a>
-        ))}
-      </div>
-    ) : URL === "/prices/web/" ||
-      URL === "/prices/app/" ||
-      URL === "/prices/prototipo/" ||
-      URL === "/en/prices/web/" ||
-      URL === "/en/prices/app/" ||
-      URL === "/en/prices/prototipo/" ? (
-      <div class="hidden md:flex">
-        {prices.map((link) => (
-          <a
-            href={link.href}
-            title={link.href}
-            class="text-3xl px-4 hover:opacity-75"
-          >
-            {link.text}
-          </a>
-        ))}
-      </div>
-    ) : URL === "/terms" ||
-      URL === "/privacy" ||
-      URL === "/product" ||
-      URL === "/contact" ? (
-      <div />
-    ) : null
-  }
-
-  <div>
-    <Language client:visible />
+  <div class="flex gap-7 items-center max-md:hidden">
+    <a href="#services" class="text-[11px] tracking-[2px] uppercase text-gray-custom no-underline hover:text-cyan transition-colors">{t("nav.services")}</a>
+    <a href="#portfolio" class="text-[11px] tracking-[2px] uppercase text-gray-custom no-underline hover:text-cyan transition-colors">{t("nav.portfolio")}</a>
+    <a href="#about" class="text-[11px] tracking-[2px] uppercase text-gray-custom no-underline hover:text-cyan transition-colors">{t("nav.about")}</a>
+    <a href="#contact" class="text-[11px] tracking-[2px] uppercase text-gray-custom no-underline hover:text-cyan transition-colors">{t("nav.blog")}</a>
+    <a href="#contact" class="text-[11px] tracking-[2px] uppercase no-underline bg-cyan text-dark px-5 py-2 font-semibold">{t("nav.contact")}</a>
+    <a href={altPath} class="text-[10px] bg-cyan/12 border border-cyan/30 text-cyan px-[10px] py-1 tracking-[2px] no-underline hover:bg-cyan/20 transition-colors">{t("nav.switch")}</a>
   </div>
-  <button
-    id="menuButton"
-    class="md:hidden p-2 rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="icon icon-tabler icons-tabler-outline icon-tabler-menu"
-      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-        d="M4 8h16"></path><path d="M4 16h16"></path></svg
-    >
-  </button>
+  <div class="hidden max-md:flex items-center gap-3">
+    <a href={altPath} class="text-[12px] bg-cyan/12 border border-cyan/30 text-cyan px-[10px] py-1 tracking-[2px] no-underline hover:bg-cyan/20 transition-colors">{t("nav.switch")}</a>
+    <button id="menuButton" class="p-2 rounded-full hover:bg-dark-3 focus:outline-none" aria-label="Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16"/><path d="M4 16h16"/></svg>
+    </button>
+  </div>
 </nav>
 
-<div
-  id="mobileMenu"
-  class="fixed top-0 right-0 w-full h-full bg-gray-800 text-white p-4 transform translate-x-full transition-transform origin-right z-50 flex flex-col"
->
-  <button
-    id="closeMenuButton"
-    class="p-2 rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 absolute top-4 right-4"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="icon icon-tabler icons-tabler-outline icon-tabler-x"
-      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-        d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg
-    >
+<div id="mobileMenu" class="fixed top-0 right-0 w-full h-full bg-dark-3 text-white p-4 transform translate-x-full transition-transform origin-right z-50 flex flex-col">
+  <button id="closeMenuButton" class="self-end p-2 rounded-full hover:bg-dark-2 focus:outline-none">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
   </button>
-  <div class="flex flex-col items-center mt-16 space-y-8 flex-grow">
-    <div class="flex items-center">
-      <img
-        src="/logo.png"
-        class="w-48 h-16"
-        alt="Logo de Prometheustij"
-        title="Logo de Prometheustij"
-      />
-    </div>
-    <div class="text-4xl font-bold">Menu</div>
-    <div class="flex flex-col items-center space-y-4 flex-grow">
-      {
-        links.map((link) => (
-          <a
-            href={link.href}
-            title={link.href}
-            class="text-3xl py-2 hover:opacity-75"
-          >
-            {link.text}
-          </a>
-        ))
-      }
-    </div>
-    <div class="mt-auto">
-      <p class="text-center text-xl">&copy; {year} Prometheus</p>
-    </div>
+  <div class="flex flex-col items-center mt-8 space-y-6 flex-grow font-barlow">
+    <a href="/" class="font-bebas text-3xl tracking-[4px] text-white mb-6">PROMET<span class="text-cyan">H</span>EUS</a>
+    <a href="#services" class="text-2xl hover:text-cyan transition-colors">{t("nav.services")}</a>
+    <a href="#portfolio" class="text-2xl hover:text-cyan transition-colors">{t("nav.portfolio")}</a>
+    <a href="#about" class="text-2xl hover:text-cyan transition-colors">{t("nav.about")}</a>
+    <a href="#contact" class="text-2xl hover:text-cyan transition-colors">{t("nav.blog")}</a>
+    <a href={altPath} class="text-2xl border border-cyan/30 text-cyan px-6 py-1 hover:bg-cyan/10 transition-colors">{t("nav.switch")}</a>
+    <a href="#contact" class="text-2xl bg-cyan text-dark px-8 py-2 font-semibold mt-2">{t("nav.contact")}</a>
   </div>
 </div>
 
