@@ -16,22 +16,26 @@ const waUrl = "https://wa.me/526642018967";
 </a>
 
 <script>
-  const btn = document.getElementById("wa-float");
-  const footer = document.querySelector("footer");
+  function initWaObserver() {
+    const btn = document.getElementById("wa-float");
+    const footer = document.querySelector("footer");
 
-  if (btn && footer) {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          btn.style.opacity = "0";
-          btn.style.pointerEvents = "none";
-        } else {
-          btn.style.opacity = "1";
-          btn.style.pointerEvents = "auto";
-        }
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(footer);
+    if (btn && footer) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            btn.style.opacity = "0";
+            btn.style.pointerEvents = "none";
+          } else {
+            btn.style.opacity = "1";
+            btn.style.pointerEvents = "auto";
+          }
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(footer);
+    }
   }
+
+  document.addEventListener("astro:page-load", initWaObserver);
 </script>

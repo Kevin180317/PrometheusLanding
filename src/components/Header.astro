@@ -5,20 +5,19 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const altLang = lang === "en" ? "es" : "en";
 const altPath = altLang === "en" ? "/en/" : "/";
+const prefix = lang === "en" ? "/en" : "";
 ---
 
 <nav
-  class="flex items-center justify-between px-12 py-4 sticky top-0 z-[100] bg-dark/97 border-b border-cyan/20 backdrop-blur-md max-md:px-5"
+  class="flex items-center justify-between px-12 py-4 sticky top-0 z-[200] bg-dark/97 border-b border-cyan/20 backdrop-blur-md max-md:px-5"
 >
-  <a href="/" class="font-bebas text-2xl tracking-[4px] text-white no-underline">
-    PROMET<span class="text-cyan">H</span>EUS
+  <a href={prefix + "/"} class="no-underline flex items-center">
+    <img src="/logo-oficial.png" alt="Prometheus" class="h-12 w-auto" />
   </a>
   <div class="flex gap-7 items-center max-md:hidden">
-    <a href="#services" class="text-[11px] tracking-[2px] uppercase text-gray-custom no-underline hover:text-cyan transition-colors">{t("nav.services")}</a>
-    <a href="#portfolio" class="text-[11px] tracking-[2px] uppercase text-gray-custom no-underline hover:text-cyan transition-colors">{t("nav.portfolio")}</a>
-    <a href="#about" class="text-[11px] tracking-[2px] uppercase text-gray-custom no-underline hover:text-cyan transition-colors">{t("nav.about")}</a>
-    <a href="#contact" class="text-[11px] tracking-[2px] uppercase text-gray-custom no-underline hover:text-cyan transition-colors">{t("nav.blog")}</a>
-    <a href="#contact" class="text-[11px] tracking-[2px] uppercase no-underline bg-cyan text-dark px-5 py-2 font-semibold">{t("nav.contact")}</a>
+    <a href={prefix + "/services"} class="text-[11px] tracking-[2px] uppercase text-gray-custom no-underline hover:text-cyan transition-colors">{t("nav.services")}</a>
+    <a href={prefix + "/about"} class="text-[11px] tracking-[2px] uppercase text-gray-custom no-underline hover:text-cyan transition-colors">{t("nav.about")}</a>
+    <a href={prefix + "/contact"} class="text-[11px] tracking-[2px] uppercase no-underline bg-cyan text-dark px-5 py-2 font-semibold">{t("nav.contact")}</a>
     <a href={altPath} class="text-[10px] bg-cyan/12 border border-cyan/30 text-cyan px-[10px] py-1 tracking-[2px] no-underline hover:bg-cyan/20 transition-colors">{t("nav.switch")}</a>
   </div>
   <div class="hidden max-md:flex items-center gap-3">
@@ -29,18 +28,23 @@ const altPath = altLang === "en" ? "/en/" : "/";
   </div>
 </nav>
 
-<div id="mobileMenu" class="fixed top-0 right-0 w-full h-full bg-dark-3 text-white p-4 transform translate-x-full transition-transform origin-right z-50 flex flex-col">
-  <button id="closeMenuButton" class="self-end p-2 rounded-full hover:bg-dark-2 focus:outline-none">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
-  </button>
-  <div class="flex flex-col items-center mt-8 space-y-6 flex-grow font-barlow">
-    <a href="/" class="font-bebas text-3xl tracking-[4px] text-white mb-6">PROMET<span class="text-cyan">H</span>EUS</a>
-    <a href="#services" class="text-2xl hover:text-cyan transition-colors">{t("nav.services")}</a>
-    <a href="#portfolio" class="text-2xl hover:text-cyan transition-colors">{t("nav.portfolio")}</a>
-    <a href="#about" class="text-2xl hover:text-cyan transition-colors">{t("nav.about")}</a>
-    <a href="#contact" class="text-2xl hover:text-cyan transition-colors">{t("nav.blog")}</a>
-    <a href={altPath} class="text-2xl border border-cyan/30 text-cyan px-6 py-1 hover:bg-cyan/10 transition-colors">{t("nav.switch")}</a>
-    <a href="#contact" class="text-2xl bg-cyan text-dark px-8 py-2 font-semibold mt-2">{t("nav.contact")}</a>
+<div id="mobileMenu" class="fixed inset-0 w-full h-full bg-dark text-white transform translate-x-full transition-transform duration-300 ease-in-out z-[300] flex flex-col">
+  <div class="flex items-center justify-between px-6 py-5 border-b border-cyan/20">
+    <a href={prefix + "/"} class="no-underline flex items-center">
+      <img src="/logo-oficial.png" alt="Prometheus" class="h-12 w-auto" />
+    </a>
+    <button id="closeMenuButton" class="p-2 text-gray-custom hover:text-white transition-colors focus:outline-none" aria-label="Cerrar menú">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="flex flex-col px-6 py-8 gap-1 flex-grow font-barlow">
+    <a href={prefix + "/services"} class="menu-link text-lg font-semibold tracking-[1px] uppercase text-white py-4 border-b border-white/10 hover:text-cyan transition-colors">{t("nav.services")}</a>
+    <a href={prefix + "/about"} class="menu-link text-lg font-semibold tracking-[1px] uppercase text-white py-4 border-b border-white/10 hover:text-cyan transition-colors">{t("nav.about")}</a>
+    <a href={prefix + "/contact"} class="menu-link text-lg font-semibold tracking-[1px] uppercase text-white py-4 border-b border-white/10 hover:text-cyan transition-colors">{t("nav.contact")}</a>
+  </div>
+  <div class="px-6 pb-10 flex flex-col gap-3">
+    <a href={prefix + "/contact"} class="menu-link block text-center bg-cyan text-dark text-base font-bold tracking-[2px] uppercase py-4 no-underline hover:opacity-90 transition-opacity">{t("nav.contact")}</a>
+    <a href={altPath} class="menu-link block text-center border border-cyan/40 text-cyan text-sm tracking-[2px] py-3 no-underline hover:bg-cyan/10 transition-colors">{t("nav.switch")}</a>
   </div>
 </div>
 
@@ -48,12 +52,21 @@ const altPath = altLang === "en" ? "/en/" : "/";
   const menuButton = document.getElementById("menuButton");
   const closeMenuButton = document.getElementById("closeMenuButton");
   const mobileMenu = document.getElementById("mobileMenu");
-  if (menuButton && mobileMenu && closeMenuButton) {
-    menuButton.addEventListener("click", () => {
-      mobileMenu.classList.toggle("translate-x-full");
-    });
-    closeMenuButton.addEventListener("click", () => {
-      mobileMenu.classList.toggle("translate-x-full");
-    });
+
+  function closeMenu() {
+    mobileMenu?.classList.add("translate-x-full");
+    document.body.style.overflow = "";
   }
+
+  function openMenu() {
+    mobileMenu?.classList.remove("translate-x-full");
+    document.body.style.overflow = "hidden";
+  }
+
+  menuButton?.addEventListener("click", openMenu);
+  closeMenuButton?.addEventListener("click", closeMenu);
+
+  mobileMenu?.querySelectorAll(".menu-link").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
 </script>

@@ -1,4 +1,4 @@
-const BASE = "https://prometheustij.com";
+const BASE = "";
 
 export const projects = [
   {

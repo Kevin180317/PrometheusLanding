@@ -17,7 +17,9 @@ const privacidadHref = prefix + "/privacidad";
 <footer class="bg-[#07090C] px-12 py-14 pt-8 border-t border-cyan/15 max-md:px-5 max-md:py-10">
   <div class="grid grid-cols-[2.5fr_1fr_1fr_1fr] gap-10 mb-10 max-md:grid-cols-2 max-sm:grid-cols-1">
     <div>
-      <a href={home} class="font-bebas text-[22px] tracking-[4px] mb-3 no-underline text-white hover:text-cyan transition-colors block">PROMET<span class="text-cyan">H</span>EUS</a>
+      <a href={home} class="no-underline block mb-3">
+        <img src="/logo-oficial.png" alt="Prometheus" class="h-12 w-auto" />
+      </a>
       <div class="text-[12px] italic text-gray-custom font-light leading-[1.7] mb-4">{t("footer.tagline")}</div>
       <div class="text-[10px] text-gray-custom2 tracking-[2px]">{t("footer.location")}</div>
     </div>

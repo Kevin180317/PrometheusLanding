@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { projects as allProjects } from "../data/projects.js";
 
 const CATEGORIES = {
@@ -12,6 +12,12 @@ export default function ServicesPortfolio({ lang = "es" }) {
   const allLabel = isEs ? "Todo" : "All";
 
   const [active, setActive] = useState(allLabel);
+  const [animKey, setAnimKey] = useState(0);
+
+  const handleFilter = (cat) => {
+    setActive(cat);
+    setAnimKey((k) => k + 1);
+  };
 
   const projects = allProjects.map((p) => ({
     ...p,
@@ -37,7 +43,7 @@ export default function ServicesPortfolio({ lang = "es" }) {
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setActive(cat)}
+              onClick={() => handleFilter(cat)}
               className={`text-[10px] tracking-[2.5px] uppercase px-5 py-[10px] border transition-all duration-200 font-barlow cursor-pointer ${
                 active === cat
                   ? "bg-cyan text-dark border-cyan font-semibold"
@@ -51,11 +57,15 @@ export default function ServicesPortfolio({ lang = "es" }) {
 
         {/* Projects grid */}
         <div className="grid grid-cols-3 gap-4 max-md:grid-cols-2 max-sm:grid-cols-1">
-          {filtered.map((project) => (
+          {filtered.map((project, i) => (
             <a
-              key={project.slug}
+              key={`${animKey}-${project.slug}`}
               href={projectHref(project.slug)}
               className="group relative flex flex-col overflow-hidden border border-cyan/10 hover:border-cyan/40 transition-all duration-300 no-underline"
+              style={{
+                animation: `fadeSlideUp 0.4s ease both`,
+                animationDelay: `${i * 60}ms`,
+              }}
             >
               {/* Image */}
               <div className="relative h-52 overflow-hidden bg-dark-3 flex-shrink-0">
@@ -95,8 +105,22 @@ export default function ServicesPortfolio({ lang = "es" }) {
 
         {/* Empty state */}
         {filtered.length === 0 && (
-          <div className="text-center py-20 text-gray-custom text-[13px]">
-            {isEs ? "No hay proyectos en esta categoría aún." : "No projects in this category yet."}
+          <div className="flex flex-col items-center justify-center py-24 gap-4">
+            <div className="w-14 h-14 border border-cyan/20 bg-cyan/5 flex items-center justify-center mb-2">
+              <svg className="w-6 h-6 stroke-cyan fill-none stroke-[1.5]" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <span className="font-bebas text-[28px] tracking-[4px] text-white">
+              {isEs ? "PRÓXIMAMENTE" : "COMING SOON"}
+            </span>
+            <p className="text-[13px] text-gray-custom text-center max-w-xs leading-relaxed">
+              {isEs
+                ? "Estamos preparando proyectos increíbles en esta categoría."
+                : "We're preparing amazing projects in this category."}
+            </p>
           </div>
         )}
 
