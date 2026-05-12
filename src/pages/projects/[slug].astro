@@ -1,0 +1,226 @@
+---
+import Layout from "@Layouts/Layout.astro";
+import { projects } from "../../data/projects.js";
+import { getLangFromUrl } from "@src/i18n/utils";
+
+export function getStaticPaths() {
+  return projects.map((p) => ({ params: { slug: p.slug }, props: { project: p } }));
+}
+
+const { project } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = project[lang] ?? project.es;
+---
+
+<Layout
+  title={`${t.name} | Prometheus R&D`}
+  description={t.desc}
+  keywords={`${t.name}, Prometheus R&D, ${project.tag}, Tijuana`}
+>
+  <!-- Back nav -->
+  <div class="bg-dark border-b border-cyan/8 px-12 py-4 max-md:px-5">
+    <div class="max-w-6xl mx-auto">
+      <a href="/services" class="text-[10px] tracking-[3px] uppercase text-gray-custom hover:text-cyan transition-colors">
+        ← {lang === "es" ? "Volver a servicios" : "Back to services"}
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="relative bg-dark px-12 py-20 overflow-hidden max-md:px-5 max-md:py-14">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(57,186,200,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(57,186,200,0.03) 1px, transparent 1px); background-size: 48px 48px;"></div>
+    <div class="absolute top-[-100px] right-[-100px] w-[400px] h-[400px] pointer-events-none" style="background: radial-gradient(circle, rgba(57,186,200,0.08) 0%, transparent 65%);"></div>
+
+    <div class="relative max-w-6xl mx-auto grid grid-cols-[1fr_1.2fr] gap-16 items-center max-md:grid-cols-1">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="inline-block w-6 h-[1px] bg-cyan"></span>
+          <span class="text-[9px] tracking-[4px] uppercase text-cyan">{project.category}</span>
+        </div>
+        <h1 class="font-bebas text-[clamp(48px,7vw,80px)] leading-[0.9] tracking-[2px] mb-5">{t.name}</h1>
+        <p class="text-[15px] font-light text-gray-custom leading-relaxed mb-8">{t.desc}</p>
+
+        <!-- Features -->
+        <ul class="flex flex-col gap-3 mb-10">
+          {t.features.map((f) => (
+            <li class="flex items-center gap-3 text-[13px] text-white">
+              <span class="w-[5px] h-[5px] bg-cyan flex-shrink-0 inline-block"></span>
+              {f}
+            </li>
+          ))}
+        </ul>
+
+        <!-- Actions -->
+        <div class="flex gap-4 flex-wrap">
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener"
+              class="bg-cyan text-dark px-7 py-[13px] text-[11px] font-semibold tracking-[2px] uppercase no-underline inline-block hover:opacity-85 transition-opacity"
+            >
+              {lang === "es" ? "Ver sitio en vivo →" : "View live site →"}
+            </a>
+          )}
+        </div>
+      </div>
+
+      <!-- Main image -->
+      <div class="border border-cyan/10 overflow-hidden">
+        <img
+          src={project.image}
+          alt={t.name}
+          class="w-full h-auto object-cover"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery (if multiple images) -->
+  {project.images.length > 1 && (
+    <section class="px-12 py-16 bg-dark-2 border-t border-cyan/10 max-md:px-5 max-md:py-12">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="inline-block w-6 h-[1px] bg-cyan"></span>
+          <span class="text-[9px] tracking-[4px] uppercase text-cyan">
+            {lang === "es" ? "Galería" : "Gallery"}
+          </span>
+        </div>
+        <div class="grid grid-cols-3 gap-3 max-md:grid-cols-2 max-sm:grid-cols-1">
+          {project.images.map((img, i) => (
+            <button
+              data-lightbox={img}
+              data-alt={`${t.name} ${i + 1}`}
+              class="border border-cyan/10 overflow-hidden hover:border-cyan/35 transition-colors cursor-zoom-in group p-0 bg-transparent"
+            >
+              <img
+                src={img}
+                alt={`${t.name} ${i + 1}`}
+                class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500 block"
+                loading="lazy"
+              />
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Lightbox modal -->
+  <div
+    id="lightbox"
+    class="fixed inset-0 z-[1000] bg-dark/95 backdrop-blur-sm flex items-center justify-center p-6 opacity-0 pointer-events-none transition-opacity duration-300"
+    role="dialog"
+    aria-modal="true"
+  >
+    <!-- Close -->
+    <button
+      id="lightbox-close"
+      class="absolute top-5 right-6 text-gray-custom hover:text-cyan transition-colors text-[11px] tracking-[3px] uppercase flex items-center gap-2"
+      aria-label="Cerrar"
+    >
+      <svg class="w-4 h-4 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      ESC
+    </button>
+
+    <!-- Prev -->
+    <button
+      id="lightbox-prev"
+      class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 border border-cyan/20 flex items-center justify-center text-gray-custom hover:border-cyan hover:text-cyan transition-all"
+      aria-label="Anterior"
+    >
+      <svg class="w-4 h-4 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+
+    <!-- Image -->
+    <img
+      id="lightbox-img"
+      src=""
+      alt=""
+      class="max-w-full max-h-[85vh] object-contain border border-cyan/10 shadow-[0_0_60px_rgba(57,186,200,0.08)]"
+    />
+
+    <!-- Next -->
+    <button
+      id="lightbox-next"
+      class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 border border-cyan/20 flex items-center justify-center text-gray-custom hover:border-cyan hover:text-cyan transition-all"
+      aria-label="Siguiente"
+    >
+      <svg class="w-4 h-4 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+
+    <!-- Counter -->
+    <div id="lightbox-counter" class="absolute bottom-5 left-1/2 -translate-x-1/2 text-[10px] tracking-[3px] text-gray-custom uppercase"></div>
+  </div>
+
+  <script>
+    const buttons = Array.from(document.querySelectorAll("[data-lightbox]"));
+    const lb = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lightbox-img");
+    const lbClose = document.getElementById("lightbox-close");
+    const lbPrev = document.getElementById("lightbox-prev");
+    const lbNext = document.getElementById("lightbox-next");
+    const lbCounter = document.getElementById("lightbox-counter");
+
+    if (!lb || !buttons.length) {
+      // no gallery on this page
+    } else {
+      let current = 0;
+
+      const open = (idx) => {
+        current = idx;
+        const btn = buttons[current];
+        lbImg.src = btn.dataset.lightbox;
+        lbImg.alt = btn.dataset.alt ?? "";
+        lbCounter.textContent = `${current + 1} / ${buttons.length}`;
+        lb.style.opacity = "1";
+        lb.style.pointerEvents = "auto";
+        document.body.style.overflow = "hidden";
+      };
+
+      const close = () => {
+        lb.style.opacity = "0";
+        lb.style.pointerEvents = "none";
+        document.body.style.overflow = "";
+      };
+
+      const prev = () => open((current - 1 + buttons.length) % buttons.length);
+      const next = () => open((current + 1) % buttons.length);
+
+      buttons.forEach((btn, i) => btn.addEventListener("click", () => open(i)));
+      lbClose.addEventListener("click", close);
+      lbPrev.addEventListener("click", prev);
+      lbNext.addEventListener("click", next);
+      lb.addEventListener("click", (e) => { if (e.target === lb) close(); });
+
+      document.addEventListener("keydown", (e) => {
+        if (lb.style.opacity !== "1") return;
+        if (e.key === "Escape") close();
+        if (e.key === "ArrowLeft") prev();
+        if (e.key === "ArrowRight") next();
+      });
+    }
+  </script>
+
+  <!-- Tag + CTA bottom -->
+  <section class="px-12 py-14 bg-dark border-t border-cyan/10 max-md:px-5 max-md:py-10">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-6 max-md:flex-col max-md:text-center">
+      <div>
+        <span class="text-[9px] tracking-[2px] uppercase text-cyan border border-cyan/30 px-3 py-1 inline-block mb-3">{project.tag}</span>
+        <div class="font-bebas text-[clamp(24px,3vw,34px)] tracking-[2px]">
+          {lang === "es" ? "¿QUIERES ALGO SIMILAR?" : "WANT SOMETHING SIMILAR?"}
+        </div>
+        <div class="text-[13px] font-light text-gray-custom mt-1">
+          {lang === "es" ? "Primera consulta gratis, sin compromiso." : "First consultation free, no commitment."}
+        </div>
+      </div>
+      <a
+        href={lang === "es" ? "/contact" : "/en/contact"}
+        class="bg-cyan text-dark px-10 py-[14px] text-[12px] font-semibold tracking-[2px] uppercase no-underline inline-block hover:opacity-85 transition-opacity flex-shrink-0"
+      >
+        {lang === "es" ? "Cotiza gratis →" : "Free quote →"}
+      </a>
+    </div>
+  </section>
+</Layout>

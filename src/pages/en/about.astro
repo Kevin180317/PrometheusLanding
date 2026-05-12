@@ -1,0 +1,161 @@
+---
+import Layout from "@Layouts/Layout.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const badges = [
+  t("about.badge1"),
+  t("about.badge2"),
+  t("about.badge3"),
+  t("about.badge4"),
+  t("about.badge5"),
+];
+
+const differentiators = [
+  { num: "01", title: t("diff.title1"), body: t("diff.body1") },
+  { num: "02", title: t("diff.title2"), body: t("diff.body2") },
+  { num: "03", title: t("diff.title3"), body: t("diff.body3") },
+  { num: "04", title: t("diff.title4"), body: t("diff.body4") },
+];
+
+const testimonials = [
+  { quote: t("testi.quote1"), author: t("testi.author1"), role: t("testi.role1") },
+  { quote: t("testi.quote2"), author: t("testi.author2"), role: t("testi.role2") },
+];
+
+const stats = [
+  { num: "2020", label: t("hero.stat1") },
+  { num: "2", label: t("hero.stat2") },
+  { num: "10+", label: t("hero.stat3") },
+  { num: "100%", label: t("hero.stat4") },
+];
+---
+
+<Layout
+  title="About Us | Prometheus R&D"
+  description="We are a 100% Tijuana startup with a binational Tijuana–San Diego vision. Software, AI and digital electronics."
+  keywords="about us, Prometheus R&D, Tijuana startup, binational, software, AI, electronics"
+>
+  <!-- Hero -->
+  <section class="relative px-12 py-24 flex flex-col justify-center overflow-hidden bg-dark max-md:px-5 max-md:py-16">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(57,186,200,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(57,186,200,0.04) 1px, transparent 1px); background-size: 48px 48px;"></div>
+    <div class="absolute top-[-120px] right-[-120px] w-[500px] h-[500px] pointer-events-none" style="background: radial-gradient(circle, rgba(57,186,200,0.1) 0%, transparent 65%);"></div>
+    <div class="absolute bottom-[-80px] left-[-80px] w-[350px] h-[350px] pointer-events-none" style="background: radial-gradient(circle, rgba(104,198,225,0.06) 0%, transparent 65%);"></div>
+
+    <div class="relative max-w-6xl mx-auto w-full">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-block w-9 h-[2px] bg-cyan"></span>
+        <span class="text-[11px] tracking-[5px] uppercase text-cyan">{t("hero.eyebrow")}</span>
+      </div>
+      <h1 class="font-bebas text-[clamp(52px,8vw,96px)] leading-[0.9] tracking-[3px] mb-6 max-md:text-[52px]">
+        {t("about.headline1")}<br>
+        <span class="text-cyan">{t("about.accent")}</span><br>
+        {t("about.headline2")}
+      </h1>
+      <p class="text-[15px] font-light text-gray-custom max-w-xl leading-relaxed mb-10">
+        {t("about.body")}
+      </p>
+
+      <!-- Stats -->
+      <div class="flex gap-12 pt-9 border-t border-cyan/12 max-md:gap-5 max-sm:flex-wrap max-sm:gap-4">
+        {stats.map((stat) => (
+          <div>
+            <div class="font-bebas text-4xl text-cyan tracking-[2px] leading-none">{stat.num}</div>
+            <div class="text-[10px] tracking-[2px] uppercase text-gray-custom mt-1">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Badges strip -->
+  <div class="bg-dark-3 py-14 px-12 border-y border-cyan/10 max-md:px-5 max-md:py-10">
+    <div class="max-w-6xl mx-auto grid grid-cols-[1fr_1fr] gap-12 items-center max-md:grid-cols-1">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="inline-block w-6 h-[1px] bg-cyan"></span>
+          <span class="text-[10px] tracking-[5px] uppercase text-cyan">{t("diff.eyebrow")}</span>
+        </div>
+        <h2 class="font-bebas text-[clamp(36px,4vw,50px)] tracking-[3px] leading-tight">
+          WHY WE ARE<br><span class="text-cyan">DIFFERENT?</span>
+        </h2>
+      </div>
+      <div class="flex flex-col gap-[10px]">
+        {badges.map((b) => (
+          <div class="flex items-center gap-[14px] px-[18px] py-[14px] bg-[rgba(57,186,200,0.04)] border border-[rgba(57,186,200,0.12)] hover:border-[rgba(57,186,200,0.35)] transition-colors">
+            <div class="w-[6px] h-[6px] bg-cyan flex-shrink-0"></div>
+            <span class="text-[13px] text-white font-normal">{b}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Differentiators -->
+  <section class="px-12 py-20 bg-dark max-md:px-5 max-md:py-12">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="inline-block w-6 h-[1px] bg-cyan"></span>
+        <span class="text-[10px] tracking-[5px] uppercase text-cyan">{t("diff.eyebrow")}</span>
+      </div>
+      <h2 class="font-bebas text-[clamp(40px,5vw,52px)] tracking-[3px] mb-10 leading-none">{t("diff.title")}</h2>
+
+      <div class="max-w-[700px]">
+        {differentiators.map((item, i) => (
+          <>
+            <div class="flex gap-6 mb-6 items-start">
+              <div class="font-bebas text-5xl text-[rgba(57,186,200,0.15)] leading-none min-w-[52px]">{item.num}</div>
+              <div>
+                <div class="text-base font-semibold mb-[6px]">{item.title}</div>
+                <div class="text-[13px] font-light text-gray-custom leading-[1.8]">{item.body}</div>
+              </div>
+            </div>
+            {i < differentiators.length - 1 && <div class="h-[1px] bg-[rgba(57,186,200,0.08)] my-6"></div>}
+          </>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="px-12 py-20 bg-dark-2 border-t border-cyan/10 max-md:px-5 max-md:py-12">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="inline-block w-6 h-[1px] bg-cyan"></span>
+        <span class="text-[10px] tracking-[5px] uppercase text-cyan">{t("testi.eyebrow")}</span>
+      </div>
+      <h2 class="font-bebas text-[clamp(40px,5vw,52px)] tracking-[3px] mb-10 leading-none">{t("testi.title")}</h2>
+
+      <div class="grid grid-cols-2 max-md:grid-cols-1 gap-4">
+        {testimonials.map((testi) => (
+          <div class="bg-dark-3 border-l-[3px] border-cyan p-6 pl-[22px] hover:bg-[#1a2535] transition-colors">
+            <div class="text-cyan text-[13px] tracking-[3px] mb-[14px]">★★★★★</div>
+            <div class="text-[13px] font-light italic text-[#ccc] leading-[1.8] mb-4">
+              <span class="text-cyan text-lg">"</span>{testi.quote}<span class="text-cyan text-lg">"</span>
+            </div>
+            <div class="text-[13px] font-semibold text-white">{testi.author}</div>
+            <div class="text-[10px] text-cyan tracking-[1.5px] uppercase mt-[3px]">{testi.role}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="px-12 py-16 bg-dark border-t border-cyan/10 max-md:px-5 max-md:py-12">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-6 max-md:flex-col max-md:text-center">
+      <div>
+        <div class="font-bebas text-[clamp(28px,4vw,40px)] tracking-[2px] leading-tight">READY TO START?</div>
+        <div class="text-[13px] font-light text-gray-custom mt-1">First consultation is free, no strings attached.</div>
+      </div>
+      <a
+        href="/en/contact"
+        class="bg-cyan text-dark px-10 py-[14px] text-[12px] font-semibold tracking-[2px] uppercase no-underline inline-block hover:opacity-85 transition-opacity flex-shrink-0"
+      >
+        Contact us →
+      </a>
+    </div>
+  </section>
+</Layout>

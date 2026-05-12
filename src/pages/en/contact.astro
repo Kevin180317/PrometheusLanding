@@ -1,0 +1,52 @@
+---
+import Layout from "@Layouts/Layout.astro";
+import ContactPageSection from "@Components/ContactPageSection";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Contact | Prometheus R&D"
+  description="Contact us to turn your ideas into reality. Software, AI and digital electronics — Tijuana."
+  keywords="contact, Prometheus R&D, Tijuana, web development, quote"
+>
+  <!-- Hero -->
+  <section class="relative px-12 py-24 flex flex-col justify-center overflow-hidden bg-dark max-md:px-5 max-md:py-16">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(57,186,200,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(57,186,200,0.04) 1px, transparent 1px); background-size: 48px 48px;"></div>
+    <div class="absolute top-[-120px] right-[-120px] w-[500px] h-[500px] pointer-events-none" style="background: radial-gradient(circle, rgba(57,186,200,0.1) 0%, transparent 65%);"></div>
+
+    <div class="relative max-w-6xl mx-auto w-full">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-block w-9 h-[2px] bg-cyan"></span>
+        <span class="text-[11px] tracking-[5px] uppercase text-cyan">Let's talk</span>
+      </div>
+      <h1 class="font-bebas text-[clamp(52px,8vw,90px)] leading-[0.9] tracking-[3px] mb-4 max-md:text-[52px]">
+        CONTACT <span class="text-cyan">US</span>
+      </h1>
+      <p class="text-[15px] font-light text-gray-custom max-w-xl leading-relaxed">
+        Every great project starts with a conversation. Tell us your idea and let's build something together.
+      </p>
+    </div>
+  </section>
+
+  <ContactPageSection
+    client:load
+    lang="en"
+    labelPhone={t("contact.label.phone")}
+    labelEmail={t("contact.label.email")}
+    labelLocation={t("contact.label.location")}
+    placeholderName={t("contact.placeholder.name")}
+    placeholderEmail={t("contact.placeholder.email")}
+    placeholderCompany={t("contact.placeholder.company")}
+    placeholderSubject={t("contact.placeholder.subject")}
+    placeholderMessage={t("contact.placeholder.message")}
+    buttonTextSubmit={t("contact.button.text")}
+    buttonSending={t("contact.button.sending")}
+    buttonError1={t("contact.button.error1")}
+    buttonError2={t("contact.button.error2")}
+    buttonSuccess={t("contact.button.success")}
+    recaptchaError={t("contact.recaptcha.error")}
+  />
+</Layout>
