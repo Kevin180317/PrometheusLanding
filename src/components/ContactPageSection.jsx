@@ -92,7 +92,7 @@ const ContactPageSection = ({
                 </div>
                 <div>
                   <div className="text-[9px] tracking-[2px] uppercase text-gray-custom mb-1">{labelPhone}</div>
-                  <a href="tel:+526642018967" className="text-[15px] text-white no-underline hover:text-cyan transition-colors">(664)-201-8967</a>
+                  <a href="tel:+526642018967" className="text-[15px] text-themed no-underline hover:text-cyan transition-colors">(664)-201-8967</a>
                 </div>
               </div>
 
@@ -105,7 +105,7 @@ const ContactPageSection = ({
                 </div>
                 <div>
                   <div className="text-[9px] tracking-[2px] uppercase text-gray-custom mb-1">{labelEmail}</div>
-                  <a href="mailto:contact@prometheustij.com" className="text-[15px] text-white no-underline hover:text-cyan transition-colors">contact@prometheustij.com</a>
+                  <a href="mailto:contact@prometheustij.com" className="text-[15px] text-themed no-underline hover:text-cyan transition-colors">contact@prometheustij.com</a>
                 </div>
               </div>
 
@@ -118,7 +118,7 @@ const ContactPageSection = ({
                 </div>
                 <div>
                   <div className="text-[9px] tracking-[2px] uppercase text-gray-custom mb-1">{labelLocation}</div>
-                  <div className="text-[15px] text-white">Tijuana, Baja California</div>
+                  <div className="text-[15px] text-themed">Tijuana, Baja California</div>
                 </div>
               </div>
             </div>
@@ -171,7 +171,7 @@ const ContactPageSection = ({
             <form onSubmit={handleSubmit}>
               <div className="mb-[14px]">
                 <input
-                  className="w-full bg-dark-3 border border-cyan/15 text-white px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors placeholder:text-gray-custom2"
+                  className="w-full bg-dark-3 border border-cyan/15 text-themed px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors placeholder:text-gray-custom2"
                   type="text"
                   placeholder={placeholderName}
                   name="name"
@@ -179,7 +179,7 @@ const ContactPageSection = ({
               </div>
               <div className="mb-[14px]">
                 <input
-                  className="w-full bg-dark-3 border border-cyan/15 text-white px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors placeholder:text-gray-custom2"
+                  className="w-full bg-dark-3 border border-cyan/15 text-themed px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors placeholder:text-gray-custom2"
                   type="email"
                   placeholder={placeholderEmail}
                   name="email"
@@ -187,7 +187,7 @@ const ContactPageSection = ({
               </div>
               <div className="mb-[14px]">
                 <input
-                  className="w-full bg-dark-3 border border-cyan/15 text-white px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors placeholder:text-gray-custom2"
+                  className="w-full bg-dark-3 border border-cyan/15 text-themed px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors placeholder:text-gray-custom2"
                   type="text"
                   placeholder={placeholderCompany}
                   name="company"
@@ -195,7 +195,7 @@ const ContactPageSection = ({
               </div>
               <div className="mb-[14px]">
                 <input
-                  className="w-full bg-dark-3 border border-cyan/15 text-white px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors placeholder:text-gray-custom2"
+                  className="w-full bg-dark-3 border border-cyan/15 text-themed px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors placeholder:text-gray-custom2"
                   type="text"
                   placeholder={placeholderSubject}
                   name="subject"
@@ -203,7 +203,7 @@ const ContactPageSection = ({
               </div>
               <div className="mb-[14px]">
                 <textarea
-                  className="w-full bg-dark-3 border border-cyan/15 text-white px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors resize-y placeholder:text-gray-custom2"
+                  className="w-full bg-dark-3 border border-cyan/15 text-themed px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors resize-y placeholder:text-gray-custom2"
                   rows="5"
                   placeholder={placeholderMessage}
                   name="message"

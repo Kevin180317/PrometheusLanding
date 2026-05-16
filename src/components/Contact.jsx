@@ -80,7 +80,7 @@ const Contact = ({
             </div>
             <div>
               <div className="text-[9px] tracking-[2px] uppercase text-gray-custom mb-1">{labelPhone}</div>
-              <div className="text-[15px] text-white">(664) 201-8967</div>
+              <div className="text-[15px] text-themed">(664) 201-8967</div>
             </div>
           </div>
 
@@ -90,7 +90,7 @@ const Contact = ({
             </div>
             <div>
               <div className="text-[9px] tracking-[2px] uppercase text-gray-custom mb-1">{labelEmail}</div>
-              <div className="text-[15px] text-white">contact@prometheustij.com</div>
+              <div className="text-[15px] text-themed">contact@prometheustij.com</div>
             </div>
           </div>
 
@@ -100,7 +100,7 @@ const Contact = ({
             </div>
             <div>
               <div className="text-[9px] tracking-[2px] uppercase text-gray-custom mb-1">{labelLocation}</div>
-              <div className="text-[15px] text-white">Tijuana, Baja California, México</div>
+              <div className="text-[15px] text-themed">Tijuana, Baja California, México</div>
             </div>
           </div>
 
@@ -110,7 +110,7 @@ const Contact = ({
             </div>
             <div>
               <div className="text-[9px] tracking-[2px] uppercase text-gray-custom mb-1">{labelWebsite}</div>
-              <div className="text-[15px] text-white">prometheustij.com</div>
+              <div className="text-[15px] text-themed">prometheustij.com</div>
             </div>
           </div>
 
@@ -124,7 +124,7 @@ const Contact = ({
           <form onSubmit={handleSubmit}>
             <div className="mb-[14px]">
               <input
-                className="w-full bg-dark-3 border border-cyan/15 text-white px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors resize-y placeholder:text-gray-custom2"
+                className="w-full bg-dark-3 border border-cyan/15 text-themed px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors resize-y placeholder:text-gray-custom2"
                 type="text"
                 placeholder={placeholderName}
                 name="name"
@@ -132,7 +132,7 @@ const Contact = ({
             </div>
             <div className="mb-[14px]">
               <input
-                className="w-full bg-dark-3 border border-cyan/15 text-white px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors resize-y placeholder:text-gray-custom2"
+                className="w-full bg-dark-3 border border-cyan/15 text-themed px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors resize-y placeholder:text-gray-custom2"
                 type="email"
                 placeholder={placeholderEmail}
                 name="email"
@@ -140,7 +140,7 @@ const Contact = ({
             </div>
             <div className="mb-[14px]">
               <input
-                className="w-full bg-dark-3 border border-cyan/15 text-white px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors resize-y placeholder:text-gray-custom2"
+                className="w-full bg-dark-3 border border-cyan/15 text-themed px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors resize-y placeholder:text-gray-custom2"
                 type="text"
                 placeholder={placeholderCompany}
                 name="company"
@@ -148,7 +148,7 @@ const Contact = ({
             </div>
             <div className="mb-[14px]">
               <input
-                className="w-full bg-dark-3 border border-cyan/15 text-white px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors resize-y placeholder:text-gray-custom2"
+                className="w-full bg-dark-3 border border-cyan/15 text-themed px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors resize-y placeholder:text-gray-custom2"
                 type="text"
                 placeholder={placeholderSubject}
                 name="subject"
@@ -156,7 +156,7 @@ const Contact = ({
             </div>
             <div className="mb-[14px]">
               <textarea
-                className="w-full bg-dark-3 border border-cyan/15 text-white px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors resize-y placeholder:text-gray-custom2"
+                className="w-full bg-dark-3 border border-cyan/15 text-themed px-4 py-3 text-[13px] font-barlow outline-none focus:border-cyan transition-colors resize-y placeholder:text-gray-custom2"
                 rows="4"
                 placeholder={placeholderMessage}
                 name="message"
@@ -168,7 +168,7 @@ const Contact = ({
                 <ReCAPTCHA
                   ref={recaptchaRef}
                   sitekey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY}
-                  theme="dark"
+                  theme="light"
                 />
               </div>
             )}
@@ -191,7 +191,7 @@ const Contact = ({
         </div>
       </div>
 
-      <Toaster position="top-right" toastOptions={{ style: { background: '#0f1923', color: '#fff', border: '1px solid rgba(57,186,200,0.2)' } }} />
+      <Toaster position="top-right" toastOptions={{ style: { background: '#ffffff', color: '#000', border: '1px solid rgba(57,186,200,0.3)' } }} />
     </section>
   );
 };

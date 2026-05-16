@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { projects as allProjects } from "../data/projects.js";
 
 const CATEGORIES = {
-  es: ["Todo", "Software & Web", "Apps", "Electrónica", "Branding & UX/UI"],
-  en: ["All", "Software & Web", "Apps", "Electronics", "Branding & UX/UI"],
+  es: ["Todo", "Software & Web", "Apps", "Electrónica", "Fabricación", "Branding & UX/UI"],
+  en: ["All", "Software & Web", "Apps", "Electronics", "Fabrication", "Branding & UX/UI"],
 };
 
 export default function ServicesPortfolio({ lang = "es" }) {
@@ -23,7 +23,11 @@ export default function ServicesPortfolio({ lang = "es" }) {
     ...p,
     name: p[lang]?.name ?? p.es.name,
     desc: p[lang]?.desc ?? p.es.desc,
-    categoryLabel: lang === "en" && p.category === "Electrónica" ? "Electronics" : p.category,
+    categoryLabel: lang === "en"
+      ? p.category === "Electrónica" ? "Electronics"
+      : p.category === "Fabricación" ? "Fabrication"
+      : p.category
+      : p.category,
   }));
 
   const filtered =
@@ -47,7 +51,7 @@ export default function ServicesPortfolio({ lang = "es" }) {
               className={`text-[10px] tracking-[2.5px] uppercase px-5 py-[10px] border transition-all duration-200 font-barlow cursor-pointer ${
                 active === cat
                   ? "bg-cyan text-dark border-cyan font-semibold"
-                  : "bg-transparent text-gray-custom border-cyan/20 hover:border-cyan hover:text-white"
+                  : "bg-transparent text-gray-custom border-cyan/20 hover:border-cyan hover:text-themed"
               }`}
             >
               {cat}
@@ -76,7 +80,7 @@ export default function ServicesPortfolio({ lang = "es" }) {
                   loading="lazy"
                 />
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-dark/65 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 bg-[rgba(13,17,23,0.65)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <span className="text-[10px] tracking-[3px] uppercase text-cyan border border-cyan/60 px-4 py-2">
                     {isEs ? "Ver proyecto →" : "View project →"}
                   </span>
@@ -88,7 +92,7 @@ export default function ServicesPortfolio({ lang = "es" }) {
               {/* Card body */}
               <div className="bg-dark-3 p-5 flex flex-col gap-2 flex-1">
                 <div className="flex items-start justify-between gap-2">
-                  <div className="font-bebas text-[18px] tracking-[1.5px] group-hover:text-cyan transition-colors duration-300 leading-tight text-white">
+                  <div className="font-bebas text-[18px] tracking-[1.5px] group-hover:text-cyan transition-colors duration-300 leading-tight text-themed">
                     {project.name}
                   </div>
                   <span className="text-[9px] tracking-[1.5px] uppercase text-cyan border border-cyan/30 px-2 py-[3px] flex-shrink-0 mt-[2px]">
@@ -113,7 +117,7 @@ export default function ServicesPortfolio({ lang = "es" }) {
                 <path d="M2 12l10 5 10-5"/>
               </svg>
             </div>
-            <span className="font-bebas text-[28px] tracking-[4px] text-white">
+            <span className="font-bebas text-[28px] tracking-[4px] text-themed">
               {isEs ? "PRÓXIMAMENTE" : "COMING SOON"}
             </span>
             <p className="text-[13px] text-gray-custom text-center max-w-xs leading-relaxed">

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+	darkMode: 'class',
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
@@ -9,14 +10,15 @@ export default {
 					light: '#68C6E1',
 				},
 				dark: {
-					DEFAULT: '#0D1117',
-					2: '#111820',
-					3: '#161E27',
+					DEFAULT: 'rgb(var(--bg) / <alpha-value>)',
+					2: 'rgb(var(--bg-2) / <alpha-value>)',
+					3: 'rgb(var(--bg-3) / <alpha-value>)',
 				},
 				gray: {
-					custom: '#AFAFAF',
-					custom2: '#666',
+					custom: 'rgb(var(--text-muted) / <alpha-value>)',
+					custom2: 'rgb(var(--text-muted2) / <alpha-value>)',
 				},
+				themed: 'rgb(var(--text-primary) / <alpha-value>)',
 			},
 			fontFamily: {
 				bebas: ['"Bebas Neue"', 'sans-serif'],

@@ -47,9 +47,22 @@ const lang = getLangFromUrl(Astro.url);
       rel="stylesheet"
     />
     <title>{title}</title>
+    <!-- Theme init: runs before paint to avoid flash -->
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem('theme') || 'system';
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (stored === 'system' && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+        document.documentElement.setAttribute('data-theme', stored);
+      })();
+    </script>
     <ClientRouter />
   </head>
-  <body class="overflow-x-hidden bg-dark text-white font-barlow">
+  <body class="overflow-x-hidden bg-dark text-themed font-barlow">
     <Banner />
     <Header />
     <slot />
@@ -59,6 +72,23 @@ const lang = getLangFromUrl(Astro.url);
 </html>
 
 <style is:global>
+  :root {
+    --bg: 255 255 255;
+    --bg-2: 245 247 250;
+    --bg-3: 234 236 239;
+    --text-primary: 0 0 0;
+    --text-muted: 85 85 85;
+    --text-muted2: 136 136 136;
+  }
+  .dark {
+    --bg: 13 17 23;
+    --bg-2: 17 24 32;
+    --bg-3: 22 30 39;
+    --text-primary: 255 255 255;
+    --text-muted: 175 175 175;
+    --text-muted2: 102 102 102;
+  }
+
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;

@@ -34,14 +34,14 @@ const services = [
 
   <div class="grid grid-cols-2 max-md:grid-cols-1 gap-[1px] bg-cyan/10 border border-cyan/10">
     {services.map((s) => (
-      <div class="bg-dark-3 p-9 pl-7 relative group transition-colors hover:bg-[#1a2535] max-md:p-6">
+      <div class="bg-dark-3 p-9 pl-7 relative group transition-colors hover:bg-gray-200 dark:hover:bg-[#1a2535] max-md:p-6">
         <div class="absolute top-0 left-0 w-[3px] h-0 bg-cyan transition-all duration-[350ms] group-hover:h-full"></div>
         <div class="w-11 h-11 bg-[rgba(57,186,200,0.08)] border border-cyan/20 flex items-center justify-center mb-5">
           <svg class="w-5 h-5 stroke-cyan fill-none stroke-[1.5]" viewBox="0 0 24 24" set:html={s.icon} />
         </div>
         <div class="font-bebas text-[22px] tracking-[2px] mb-[10px]">{s.name}</div>
         <div class="text-[13px] font-light text-gray-custom leading-[1.7] mb-[18px]">{s.desc}</div>
-        <span class="text-[10px] tracking-[1.5px] uppercase text-cyan border border-cyan/30 px-3 py-1 inline-block">{s.tag}</span>
+        <a href="#contact" class="text-[10px] tracking-[1.5px] uppercase text-cyan border border-cyan/30 px-3 py-1 inline-block hover:bg-cyan/10 transition-colors no-underline">{s.tag}</a>
       </div>
     ))}
   </div>
