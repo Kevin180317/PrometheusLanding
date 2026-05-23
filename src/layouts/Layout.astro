@@ -40,6 +40,34 @@ const lang = getLangFromUrl(Astro.url);
       name="google-site-verification"
       content="GExUNFmJDSMw7Nb_yoabt-80oVorKEkOcGO2eQ_4aHg"
     />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Prometheus R&D",
+      alternateName: "PrometheusTij",
+      url: "https://prometheustij.com",
+      logo: "https://prometheustij.com/logo-oficial.png",
+      description,
+      foundingDate: "2020",
+      founders: [{ "@type": "Person", name: "Prometheus R&D Team" }],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Tijuana",
+        addressRegion: "Baja California",
+        addressCountry: "MX",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+52-664-201-8967",
+        contactType: "customer service",
+        email: "contact@prometheustij.com",
+      },
+      sameAs: [
+        "https://www.instagram.com/prometheusarttij/",
+        "https://www.facebook.com/profile.php?id=61555674795492",
+        "https://x.com/PrometheusTij",
+      ],
+    })} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
