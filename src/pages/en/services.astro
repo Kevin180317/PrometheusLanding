@@ -5,12 +5,14 @@ import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const params = new URLSearchParams(Astro.url.search);
+const filtro = params.get("filtro") || "";
 ---
 
 <Layout
   title="Services | Prometheus R&D"
-  description="Software, AI Automation, Digital Electronics and Branding — custom solutions in Tijuana."
-  keywords="services, software development, AI, electronics, branding, Tijuana"
+  description="Software, AI Automation and Digital Electronics — custom solutions in Tijuana."
+  keywords="services, software development, AI, electronics, Tijuana"
 >
   <!-- Hero -->
   <section class="relative px-12 py-24 overflow-hidden bg-dark max-md:px-5 max-md:py-16">
@@ -32,7 +34,7 @@ const t = useTranslations(lang);
   </section>
 
   <!-- Filter + Projects -->
-  <ServicesPortfolio client:load lang="en" />
+  <ServicesPortfolio client:load lang="en" initialFilter={filtro} key={"sp-" + (filtro || "all")} />
 
   <!-- CTA strip -->
   <section class="px-12 py-16 bg-dark-2 border-t border-cyan/10 max-md:px-5 max-md:py-12">

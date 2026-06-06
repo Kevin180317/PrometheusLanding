@@ -86,7 +86,7 @@ Cargadas via Google Fonts en `Layout.astro`.
 - Eyebrow: línea cyan + "Tijuana · San Diego · Binacional"
 - Título: "WE BRING THE FIRE OF TECH" con "FIRE" en cyan
 - Tagline: itálico cyan-light
-- Pills: 4 tags hovereables (Software, AI, Electronics, Branding)
+- Pills: 3 tags hovereables (Software, AI, Electronics)
 - CTAs: "Ver servicios →" (cyan) y "Consulta gratis" (outline)
 - Stats: 4 columnas (2020, 2, 10+, 100%) con números en Bebas Neue
 

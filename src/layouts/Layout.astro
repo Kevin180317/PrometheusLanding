@@ -1,5 +1,5 @@
 ---
-import { ClientRouter } from "astro:transitions";
+import { ViewTransitions } from "astro:transitions";
 import Banner from "@Components/Banner.astro";
 import Header from "@Components/Header.astro";
 import Footer from "@Components/Footer.astro";
@@ -78,9 +78,8 @@ const lang = getLangFromUrl(Astro.url);
     <!-- Theme init: runs before paint to avoid flash -->
     <script is:inline>
       (function () {
-        const stored = localStorage.getItem('theme') || 'system';
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (stored === 'dark' || (stored === 'system' && prefersDark)) {
+        const stored = localStorage.getItem('theme') || 'dark';
+        if (stored === 'dark') {
           document.documentElement.classList.add('dark');
         } else {
           document.documentElement.classList.remove('dark');
@@ -88,7 +87,7 @@ const lang = getLangFromUrl(Astro.url);
         document.documentElement.setAttribute('data-theme', stored);
       })();
     </script>
-    <ClientRouter />
+    <ViewTransitions />
   </head>
   <body class="overflow-x-hidden bg-dark text-themed font-barlow">
     <Banner />

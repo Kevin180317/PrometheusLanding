@@ -361,34 +361,4 @@ export const projects = [
       ],
     },
   },
-  {
-    slug: "display",
-    category: "Fabricación",
-    tag: "Display",
-    live: null,
-    image: `${BASE}/Imagenes/3D.jpg`,
-    images: [`${BASE}/Imagenes/3D.jpg`],
-    es: {
-      name: "Display",
-      desc: "Soluciones de display y señalización digital a medida. Integración de pantallas y sistemas de visualización para entornos comerciales e industriales.",
-      features: [
-        "Señalización digital",
-        "Integración de pantallas",
-        "Sistemas de visualización",
-        "Entornos comerciales e industriales",
-        "Soluciones a medida",
-      ],
-    },
-    en: {
-      name: "Display",
-      desc: "Custom display and digital signage solutions. Screen integration and visualization systems for commercial and industrial environments.",
-      features: [
-        "Digital signage",
-        "Screen integration",
-        "Visualization systems",
-        "Commercial and industrial environments",
-        "Custom solutions",
-      ],
-    },
-  },
 ];

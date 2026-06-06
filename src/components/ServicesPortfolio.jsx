@@ -1,18 +1,43 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { projects as allProjects } from "../data/projects.js";
 
 const CATEGORIES = {
-  es: ["Todo", "Software & Web", "Apps", "Electrónica", "Fabricación", "Branding & UX/UI"],
-  en: ["All", "Software & Web", "Apps", "Electronics", "Fabrication", "Branding & UX/UI"],
+  es: ["Todo", "Software & Web", "Apps", "Electrónica", "Impresión 3D"],
+  en: ["All", "Software & Web", "Apps", "Electronics", "3D Printing"],
 };
 
-export default function ServicesPortfolio({ lang = "es" }) {
+const FILTRO_MAP = {
+  es: { software: "Software & Web", apps: "Apps", electronica: "Electrónica", fabricacion: "Impresión 3D" },
+  en: { software: "Software & Web", apps: "Apps", electronica: "Electronics", fabricacion: "3D Printing" },
+};
+
+export default function ServicesPortfolio({ lang = "es", initialFilter = "" }) {
   const isEs = lang === "es";
   const categories = CATEGORIES[lang] || CATEGORIES.es;
   const allLabel = isEs ? "Todo" : "All";
 
-  const [active, setActive] = useState(allLabel);
+  const [active, setActive] = useState(() => {
+    if (initialFilter && FILTRO_MAP[lang]?.[initialFilter]) {
+      return FILTRO_MAP[lang][initialFilter];
+    }
+    return allLabel;
+  });
   const [animKey, setAnimKey] = useState(0);
+
+  useEffect(() => {
+    function applyFilterFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const filtro = params.get("filtro");
+      if (filtro && FILTRO_MAP[lang]?.[filtro]) {
+        setActive(FILTRO_MAP[lang][filtro]);
+        setAnimKey((k) => k + 1);
+      }
+    }
+
+    applyFilterFromUrl();
+    document.addEventListener("astro:page-load", applyFilterFromUrl);
+    return () => document.removeEventListener("astro:page-load", applyFilterFromUrl);
+  }, [lang]);
 
   const handleFilter = (cat) => {
     setActive(cat);
@@ -25,8 +50,9 @@ export default function ServicesPortfolio({ lang = "es" }) {
     desc: p[lang]?.desc ?? p.es.desc,
     categoryLabel: lang === "en"
       ? p.category === "Electrónica" ? "Electronics"
-      : p.category === "Fabricación" ? "Fabrication"
+      : p.category === "Fabricación" ? "3D Printing"
       : p.category
+      : p.category === "Fabricación" ? "Impresión 3D"
       : p.category,
   }));
 
